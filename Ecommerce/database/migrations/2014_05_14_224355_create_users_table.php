@@ -13,13 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('fourniseurs', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('nom');
             $table->string('prenom');
             $table->string('tel');
             $table->string('adresse');
+            $table->enum('role_id', ['a', 'v', 'c'])->default('v');
             $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->foreignId('ville_id')->constrained('ville','id')->onUpdate('cascade')->onDelete('cascade');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -31,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fourniseurs');
+        //
     }
 };

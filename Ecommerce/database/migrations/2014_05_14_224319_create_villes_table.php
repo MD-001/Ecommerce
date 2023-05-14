@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('mode_livraison', function (Blueprint $table) {
+        Schema::create('villes', function (Blueprint $table) {
             $table->id();
-            $table->date("libelle");
-            $table->date("description");
-            $table->timestamps();
+            $table->string("nom");
         });
     }
 
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mode_livraison');
+        Schema::dropIfExists('villes');
     }
 };
