@@ -18,10 +18,8 @@ return new class extends Migration
             $table->dateTime("date");
             $table->string("desciption");
             $table->foreignId('etat_commande_id')->constrained('etats_commande','id')->onUpdate('cascade')->onDelete('cascade');
-            $table->integer("quantite_produit");
-            $table->integer("total");
+            $table->decimal("total",8,2);
             $table->foreignId('livraison_id')->constrained('livraisons','id')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('produit_id')->constrained('produits','id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('client_id')->constrained('users','id')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });

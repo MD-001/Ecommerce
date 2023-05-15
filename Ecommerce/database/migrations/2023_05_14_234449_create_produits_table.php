@@ -21,10 +21,6 @@ return new class extends Migration
             $table->string("image");
             $table->integer("qte_stock");
             $table->decimal("tva",4,2);
-            // $table->string('RoleID', 10)->default('c');
-            // $table->foreign('RoleID')->references('id')->on('roles'); 
-            // $table->integer('neighborhood_id')->length(11);
-            // $table->foreign('neighborhood_id')->references('id')->on('sa_neighborhoods');
             $table->foreignId('propiete_id')->constrained('proprietes','id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('marque_id')->constrained('marques','id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('fournisseur_id')->constrained('fournisseurs','id')->onUpdate('cascade')->onDelete('cascade');
