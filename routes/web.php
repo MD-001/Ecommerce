@@ -26,7 +26,7 @@ Route::get('/show-product', function () {
     return view('shop-item.index');
 });
 
-Route::get('/dash-bord', function () {
+Route::get('/dashboard', function () {
     return view('admin.index');
 });
 

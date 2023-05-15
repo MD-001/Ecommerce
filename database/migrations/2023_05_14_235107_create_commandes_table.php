@@ -16,10 +16,9 @@ return new class extends Migration
         Schema::create('commandes', function (Blueprint $table) {
             $table->id('ref');
             $table->dateTime("date");
-            $table->string("desciption");
+            $table->string("description");
             $table->foreignId('etat_commande_id')->constrained('etats_commande','id')->onUpdate('cascade')->onDelete('cascade');
             $table->decimal("total",8,2);
-            $table->foreignId('livraison_id')->constrained('livraisons','id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('client_id')->constrained('users','id')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
