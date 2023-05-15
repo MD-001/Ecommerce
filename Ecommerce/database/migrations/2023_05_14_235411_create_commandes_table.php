@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('commandes', function (Blueprint $table) {
             $table->id('ref');
-            $table->date("date");
+            $table->dateTime("date");
             $table->string("desciption");
-            $table->integer("total");
+            $table->foreignId('etat_commande_id')->constrained('etats_commande','id')->onUpdate('cascade')->onDelete('cascade');
             $table->integer("quantite_produit");
+            $table->integer("total");
             $table->foreignId('livraison_id')->constrained('livraisons','id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('produit_id')->constrained('produits','id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('client_id')->constrained('users','id')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('etat_commande_id')->constrained('etat_commande_id','id')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

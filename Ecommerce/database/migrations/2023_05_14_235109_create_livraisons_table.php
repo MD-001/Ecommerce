@@ -17,8 +17,7 @@ return new class extends Migration
             $table->id();
             $table->dateTime("date");
             $table->foreignId('commande_id')->constrained('commande_id','id')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('mode_livraison_id')->constrained('mode_livraison_id','id')->onUpdate('cascade')->onDelete('cascade');
-            $table->timestamps();
+            $table->foreignId('mode_livraison_id')->constrained('modes_livraison','id')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

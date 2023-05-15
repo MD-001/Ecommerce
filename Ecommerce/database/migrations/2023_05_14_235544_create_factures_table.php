@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('factures', function (Blueprint $table) {
             $table->id();
-            $table->string("date");
             $table->string("total");
+            $table->dateTime("date");
             $table->foreignId('commande_id')->constrained('commandes','id')->onUpdate('cascade')->onDelete('cascade');
         });
     }

@@ -30,5 +30,16 @@ Route::get('/dash-bord', function () {
     return view('admin.index');
 });
 
+// Route::get('/add-product', function () {
+//     return view('admin.categorie');
+// });
+
+Route::get('/categories', function () {
+    return view('admin.liste-categorie');
+});
+
+Route::get('/add-categorie', function () {
+    return view('admin.ajouter-categorie');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

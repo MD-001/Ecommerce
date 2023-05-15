@@ -19,11 +19,12 @@ return new class extends Migration
             $table->string('prenom');
             $table->string('tel');
             $table->string('adresse');
-            $table->enum('role_id', ['a', 'v', 'c'])->default('v');
+            $table->enum('role', ['a', 'v', 'c'])->default('v');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('username');
             $table->string('password');
-            $table->foreignId('ville_id')->constrained('ville','id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('ville_id')->constrained('villes','id')->onUpdate('cascade')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

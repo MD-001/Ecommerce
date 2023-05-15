@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string("desciption");
             $table->decimal('prix', 8, 2);
             $table->string("image");
-            $table->string("qte_stock");
-            $table->string("tva");
+            $table->integer("qte_stock");
+            $table->decimal("tva",4,2);
             // $table->string('RoleID', 10)->default('c');
             // $table->foreign('RoleID')->references('id')->on('roles'); 
             // $table->integer('neighborhood_id')->length(11);
