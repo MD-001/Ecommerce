@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use App\Models\Ville;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -18,7 +19,13 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
+            'nom' => fake()->firstName(),
+            'prenom' => fake()->lastName(),
+            'tel' => fake()->phoneNumber(),
+            'adresse' => fake()->address(),
+            'role' => fake()->randomElement(['v','c','a']),
+            'username' => fake()->userName(),
+            'ville_id' => fake()->randomElement(), ////?
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

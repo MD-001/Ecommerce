@@ -17,7 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::middleware(['guest'])->group(function () {
+    // routes des visiteurs
+    Route::middleware(['auth'])->group(function () {
+        // routes des clients
+        Route::middleware(['admin'])->group(function () {
+            // routes de l'admin
+        });
+    });
+});
 
 Route::get('/all-product', function () {
     return view('homepage.index');
@@ -26,7 +34,6 @@ Route::get('/show-product', function () {
     return view('shop-item.index');
 });
 
-<<<<<<< HEAD
 Route::get('/dashboard', function () {
     return view('admin.index');
 });
@@ -42,11 +49,5 @@ Route::get('/categories', function () {
 Route::get('/add-categorie', function () {
     return view('admin.ajouter-categorie');
 });
-=======
-Route::get('/dash-bord', function () {
-    return view('admin.index');
-});
-
->>>>>>> a3be46eeaba44f8fa98da61d6d00e1efb66b7954
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

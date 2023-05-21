@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->decimal("total",8,2);
             $table->dateTime("date");
-            $table->foreignId('commande_id')->constrained('commandes','ref')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('commande_ref')->constrained('commandes','ref')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

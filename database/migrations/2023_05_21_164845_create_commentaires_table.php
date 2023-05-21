@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ligne_commandes', function (Blueprint $table) {
-            $table->id();
-            $table->decimal('sous_total',8,2);
-            $table->integer('qte_produit');
-            $table->foreignId('commande_id')->constrained('commandes','ref')->onUpdate('cascade')->onDelete('cascade');
+        Schema::create('commentaires', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained('users','id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('produit_ref')->constrained('produits','ref')->onUpdate('cascade')->onDelete('cascade');
+            $table->mediumText('contenu');
+            $table->timestamps();
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ligne_commandes');
+        Schema::dropIfExists('commentaires');
     }
 };

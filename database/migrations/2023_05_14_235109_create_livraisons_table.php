@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('livraisons', function (Blueprint $table) {
             $table->id();
             $table->dateTime("date");
-            $table->foreignId('commande_id')->constrained('commandes','ref')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('commande_ref')->constrained('commandes','ref')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('mode_livraison_id')->constrained('modes_livraison','id')->onUpdate('cascade')->onDelete('cascade');
         });
     }
