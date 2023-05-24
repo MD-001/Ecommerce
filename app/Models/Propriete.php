@@ -14,4 +14,5 @@ class Propriete extends Model
                     "description"
                     ];
     protected $primaryKey = "id";
+    public $timestamps = false;
 }

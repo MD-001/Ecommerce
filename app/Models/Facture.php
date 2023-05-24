@@ -12,7 +12,8 @@ class Facture extends Model
     protected $fillable = [
                     "total",
                     "date",
-                    "commande_id"
+                    "commande_ref"
                     ];
     protected $primaryKey = "id";
+    public $timestamps = false;
 }

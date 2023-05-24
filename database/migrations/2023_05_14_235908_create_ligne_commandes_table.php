@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->decimal('sous_total',8,2);
             $table->integer('qte_produit');
-            $table->foreignId('commande_id')->constrained('commandes','ref')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('commande_ref')->constrained('commandes','ref')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('produit_ref')->constrained('produits','ref')->onUpdate('cascade')->onDelete('cascade');
         });
     }

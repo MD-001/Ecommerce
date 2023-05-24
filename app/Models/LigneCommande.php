@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ligne_commande extends Model
+class LigneCommande extends Model
 {
     use HasFactory;
     protected $table = "ligne_commandes";
     protected $fillable = [
                     "sous_total",
                     "qte_produit",
-                    "commande_id",
-                    "produit_id"
+                    "commande_ref",
+                    "produit_ref"
                     ];  
     protected $primaryKey = "id";
+    public $timestamps = false;
 }

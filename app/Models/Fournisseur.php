@@ -16,4 +16,5 @@ class Fournisseur extends Model
                     "adresse"
                     ];
     protected $primaryKey = "id";
+    public $timestamps = false;
 }

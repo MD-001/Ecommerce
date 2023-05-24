@@ -20,7 +20,7 @@ return new class extends Migration
             $table->decimal('prix', 8, 2);
             $table->string("image");
             $table->integer("qte_stock");
-            $table->decimal("tva",4,2);
+            $table->integer("tva");
             $table->tinyInteger('rating')->between(1, 5);
             $table->foreignId('propiete_id')->constrained('proprietes','id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('marque_id')->constrained('marques','id')->onUpdate('cascade')->onDelete('cascade');

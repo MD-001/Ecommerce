@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('commentaires', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('user_id')->constrained('users','id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('produit_ref')->constrained('produits','ref')->onUpdate('cascade')->onDelete('cascade');
             $table->mediumText('contenu');

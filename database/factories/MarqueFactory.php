@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Ville>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Marque>
  */
-class VilleFactory extends Factory
+class MarqueFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,9 @@ class VilleFactory extends Factory
     public function definition()
     {
         return [
-            // directement dans le fichier DatabaseSeeder
+            "nom" => fake()->name(),
+            "libelle" => fake()->sentence(),
+            "image" => fake()->imageUrl()
         ];
     }
 }

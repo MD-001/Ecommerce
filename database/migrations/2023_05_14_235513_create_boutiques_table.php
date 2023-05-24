@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string("adresse");
             $table->string("tel");
-            $table->string("commande");
         });
     }
 

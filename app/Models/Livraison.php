@@ -11,8 +11,9 @@ class Livraison extends Model
     protected $table = "livraisons";
     protected $fillable = [
                     "date",
-                    'commande_id',
+                    'commande_ref',
                     'mode_livraison_id'
                     ];
     protected $primaryKey = "id";
+    public $timestamps = false;
 }

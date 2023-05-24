@@ -25,7 +25,7 @@ class UserFactory extends Factory
             'adresse' => fake()->address(),
             'role' => fake()->randomElement(['v','c','a']),
             'username' => fake()->userName(),
-            'ville_id' => fake()->randomElement(), ////?
+            'ville_id' => fake()->randomElement(Ville::pluck('id')),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

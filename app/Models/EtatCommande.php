@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Etat_commande extends Model
+class EtatCommande extends Model
 {
     use HasFactory;
     protected $table = "etats_commande";
@@ -14,4 +14,5 @@ class Etat_commande extends Model
                     "description"
                     ];
     protected $primaryKey = "id";
+    public $timestamps = false;
 }

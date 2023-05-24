@@ -16,6 +16,7 @@ class Produit extends Model
                     "image",
                     "qte_stock",
                     "tva",
+                    "rating",
                     'propiete_id',
                     'marque_id',
                     'fournisseur_id',
