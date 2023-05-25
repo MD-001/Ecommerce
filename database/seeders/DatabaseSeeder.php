@@ -140,7 +140,6 @@ class DatabaseSeeder extends Seeder
         Facture::factory(50)->create();
         LigneCommande::factory(50)->create();
         Commentaire::factory(50)->create();
-
         
     }
 }
