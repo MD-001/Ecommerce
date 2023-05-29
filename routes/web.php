@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductCotroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('homepage.index');
+
+    return redirect()->route('product.index');
 });
+
 
 Route::middleware(['guest'])->group(function () {
     // routes des visiteurs
@@ -26,6 +30,9 @@ Route::middleware(['guest'])->group(function () {
         });
     });
 });
+
+
+Route::resource('/product', ProductCotroller::class);
 
 Route::get('/all-product', function () {
     return view('homepage.index');

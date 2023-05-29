@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Produit;
 
 class ProductCotroller extends Controller
 {
@@ -13,7 +14,9 @@ class ProductCotroller extends Controller
      */
     public function index()
     {
-        //
+        $allProducts = Produit::all();
+        return view('homepage.index', ['allProducts'=>$allProducts]);
+
     }
 
     /**
