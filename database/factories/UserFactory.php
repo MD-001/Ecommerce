@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\Ville;
@@ -23,7 +24,7 @@ class UserFactory extends Factory
             'prenom' => fake()->lastName(),
             'tel' => fake()->phoneNumber(),
             'adresse' => fake()->address(),
-            'role' => fake()->randomElement(['v','c','a']),
+            'role' => fake()->randomElement(Role::pluck('id')),
             'username' => fake()->userName(),
             'ville_id' => fake()->randomElement(Ville::pluck('id')),
             'email' => fake()->unique()->safeEmail(),

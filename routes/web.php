@@ -17,11 +17,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['guest'])->group(function () {
+Route::group([
+    'middleware' => 'guest', 
+    'prefix' => 'guests', 
+    'as' => '.guests'
+    ], function () {
     // routes des visiteurs
-    Route::middleware(['auth'])->group(function () {
+    
+    
+    Route::group([
+        'middleware' => 'auth', 
+        'prefix' => 'client', 
+        'as' => '.client'
+        ], function () {
         // routes des clients
-        Route::middleware(['admin'])->group(function () {
+        
+        
+        Route::group([
+            'middleware' => 'admin', 
+            'prefix' => 'admin', 
+            'as' => '.admin'
+            ], function () {
             // routes de l'admin
         });
     });

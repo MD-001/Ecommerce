@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Boutique extends Model
+class ServiceLivraison extends Model
 {
     use HasFactory;
-    protected $table = "boutiques";
+    protected $table = "services_livraison";
     protected $fillable = [
+                    "nom",       
                     "adresse",
-                    "tel",
-                    "commande"
+                    "tel"
                     ];
     protected $primaryKey = 'id';
+    public $timestamps = false;
 }

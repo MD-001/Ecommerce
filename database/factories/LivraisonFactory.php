@@ -3,7 +3,9 @@
 namespace Database\Factories;
 
 use App\Models\Commande;
+use App\Models\Livraison;
 use App\Models\ModeLivraison;
+use App\Models\ServiceLivraison;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,7 +23,8 @@ class LivraisonFactory extends Factory
         return [
             "date" => fake()->dateTime(),
             'commande_ref' => fake()->randomElement(Commande::pluck("ref")),
-            'mode_livraison_id' => fake()->randomElement(ModeLivraison::pluck("id"))
+            'mode_livraison_id' => fake()->randomElement(ModeLivraison::pluck("id")),
+            'service_livraison_id' => fake()->randomElement(ServiceLivraison::pluck("id"))
         ];
     }
 }

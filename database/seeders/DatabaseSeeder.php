@@ -4,20 +4,22 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Categorie;
-use App\Models\Commande;
-use App\Models\Commentaire;
-use App\Models\EtatCommande;
-use App\Models\Facture;
-use App\Models\Fournisseur;
-use App\Models\LigneCommande;
-use App\Models\Livraison;
-use App\Models\Marque;
-use App\Models\ModeLivraison;
-use App\Models\Produit;
-use App\Models\Propriete;
+use App\Models\Role;
 use App\Models\User;
 use App\Models\Ville;
+use App\Models\Marque;
+use App\Models\Facture;
+use App\Models\Produit;
+use App\Models\Commande;
+use App\Models\Categorie;
+use App\Models\Livraison;
+use App\Models\Propriete;
+use App\Models\Commentaire;
+use App\Models\Fournisseur;
+use App\Models\EtatCommande;
+use App\Models\LigneCommande;
+use App\Models\ModeLivraison;
+use App\Models\ServiceLivraison;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -29,6 +31,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Role::create(['role' => 'Client']);
+        Role::create(['role' => 'Admin']);
+
         Ville::insert([
             ["nom" => "Casablanca"],
             ["nom" => "Agadir"],
@@ -136,6 +141,18 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Commande::factory(50)->create();
+
+        $nomServicesLivraison = ['FedEx', 'Atlas Livraison', 'Express Coursier', 'COLISADE', 'ForLivraison', 'Mpacket', 'Cathedis', 'Send It', 'Oubratra Maroc', 'MagiCourses', 'Aqua Coursier'];
+
+        foreach ($nomServicesLivraison as $nom) {
+            ServiceLivraison::create([
+                'nom' => $nom,
+                'adresse' => fake()->address(),
+                'tel' => fake()->phoneNumber(),
+            ]);
+        }
+
+
         Livraison::factory(50)->create();
         Facture::factory(50)->create();
         LigneCommande::factory(50)->create();

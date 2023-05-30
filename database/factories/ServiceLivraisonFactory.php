@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Boutique>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ServiceLivraisonFactory>
  */
-class BoutiqueFactory extends Factory
+class ServiceLivraisonFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,8 +17,7 @@ class BoutiqueFactory extends Factory
     public function definition()
     {
         return [
-            "adresse" => fake()->address(),
-            "tel" => fake()->phoneNumber()
+            // directement dans le fichier DatabaseSeeder
         ];
     }
 }

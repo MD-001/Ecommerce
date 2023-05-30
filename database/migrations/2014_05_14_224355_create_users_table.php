@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('prenom');
             $table->string('tel');
             $table->string('adresse');
-            $table->enum('role', ['a', 'v', 'c'])->default('v');
+            $table->foreignId('role')->constrained('roles','id')->onUpdate('cascade')->onDelete('cascade');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('username');
