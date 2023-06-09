@@ -28,7 +28,7 @@ class ProduitFactory extends Factory
             'qte_stock' => fake()->numberBetween(50,300),
             'tva' => fake()->numberBetween(5,20),
             'rating' => fake()->numberBetween(1,5),
-            'propiete_id' => fake()->randomElement(Propriete::pluck('id')),
+            'propriete_id' => fake()->randomElement(Propriete::pluck('id')),
             'marque_id' => fake()->randomElement(Marque::pluck('id')),
             'fournisseur_id' => fake()->randomElement(Fournisseur::pluck('id')),
             'categorie_id' => fake()->randomElement(Categorie::pluck('id'))

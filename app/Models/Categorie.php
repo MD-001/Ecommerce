@@ -14,5 +14,6 @@ class Categorie extends Model
                     "image"
                     ];
     protected $primaryKey = 'id';
+    public $timestamps = false;
 }
 
