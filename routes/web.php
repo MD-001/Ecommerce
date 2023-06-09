@@ -18,9 +18,7 @@ use App\Models\Produit;
 */
 
 Route::get('/', function () {
-    // return view('homepage.index');
-
-    return redirect()->route('product.index');
+    return view('layouts.app');
 });
 
 Route::group([
@@ -28,8 +26,7 @@ Route::group([
     'prefix' => 'guests', 
     'as' => '.guests'
     ], function () {
-    // routes des visiteurs
-    
+        Route::get("/home", []);
     
     Route::group([
         'middleware' => 'auth', 
