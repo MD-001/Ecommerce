@@ -14,7 +14,9 @@ class ProductCotroller extends Controller
      */
     public function index()
     {
+      
         $allProducts = Produit::all();
+        //   dd($allProducts);
         return view('homepage.index', ['allProducts'=>$allProducts]);
 
     }

@@ -16,16 +16,23 @@ use App\Http\Controllers\ProductCotroller;
 
 Route::get('/', function () {
     // return view('homepage.index');
+    // return view('welcome');
 
     return redirect()->route('product.index');
 });
 
+// Route::get('/', function () {  //faute
+//     return view('auth.login');
+// })->middleware('guest');
+
 Route::group([
     'middleware' => 'guest', 
-    'prefix' => 'guests', 
+    'prefix' => 'visiteur', 
     'as' => '.guests'
     ], function () {
     // routes des visiteurs
+
+
     
     
     Route::group([
@@ -47,7 +54,7 @@ Route::group([
 });
 
 
-Route::resource('/product', ProductCotroller::class);
+Route::resource('/product', ProductCotroller::class)->middleware('guest');
 
 Route::get('/all-product', function () {
     return view('homepage.index');
@@ -71,5 +78,9 @@ Route::get('/categories', function () {
 Route::get('/add-categorie', function () {
     return view('admin.ajouter-categorie');
 });
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

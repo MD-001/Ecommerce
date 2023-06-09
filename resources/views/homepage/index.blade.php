@@ -2,8 +2,9 @@
  
 <title>Shop Homepage - Start Bootstrap Template</title>
  @section('body')
+ {{-- {{ dd($allProducts); }} --}}
         
-
+@section('content')
           <!-- Section-->
           <!-- Section-->
         <section class="py-5">
@@ -61,6 +62,7 @@
         </footer>
 
 
+        @endsection
         @endsection
 
 
