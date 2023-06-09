@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\CategorieController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductCotroller;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ProduitController;
+use App\Models\Produit;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,5 +75,7 @@ Route::get('/categories', function () {
 Route::get('/add-categorie', function () {
     return view('admin.ajouter-categorie');
 });
+Route::Resource('/categorie', CategorieController::class);
+Route::Resource('/produit', ProduitController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

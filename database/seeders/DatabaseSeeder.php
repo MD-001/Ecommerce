@@ -152,7 +152,6 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-
         Livraison::factory(50)->create();
         Facture::factory(50)->create();
         LigneCommande::factory(50)->create();

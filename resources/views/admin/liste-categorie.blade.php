@@ -47,9 +47,13 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/produit">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Ajouter Categorie
+                                Ajouter produit
+                            </a>
+                            <a class="nav-link" href="/categorie">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Ajouter categorie
                             </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -125,7 +129,7 @@
                                         <i class="fas fa-table me-1"></i>Categorie Disponible
                                     </li>
                                     <li>
-                                        <button class="btn btn-success">Ajouter Categorie</button>
+                                        <a class="btn btn-success" href="{{ route('categorie.create') }}">Ajouter Categorie</a>
                                     </li>
                                 </ul>
                             </div>
@@ -135,23 +139,32 @@
                                         <tr>
                                             <th>Nom</th>
                                             <th>Image</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Nom</th>
-                                            <th>Image</th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>Electronique</td>
-                                            <td>Image</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Vetements</td>
-                                            <td>Image</td>
-                                        </tr>
+                                        <?php $estImpair = false; ?>
+                                        @foreach ($categories as $categorie)
+                                            <tr style="background-color: {{ $estImpair ? '#f2f2f2' : '#ffffff' }}">
+                                                <td>{{ $categorie->nom }}</td>
+                                                <td>
+                                                    <div class="justify-content-center d-flex">
+                                                        <img src="{{ asset($categorie->image) }}" width="120px" height="100px" alt="Image">
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <a href="{{ route('categorie.edit', $categorie->id) }}"  class="btn btn-warning">edit</a>
+                                                    <div class="d-inline-block">
+                                                    <form method="POST" action="{{ route('categorie.destroy', $categorie) }}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                                                    </form></div>
+                                                </td>
+                                            </tr>
+                                            <?php $estImpair = !$estImpair; ?>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

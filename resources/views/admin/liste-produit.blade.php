@@ -10,8 +10,6 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="admin/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-            @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -49,9 +47,13 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/produit">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Ajouter Categorie
+                                Ajouter produit
+                            </a>
+                            <a class="nav-link" href="/categorie">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Ajouter categorie
                             </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -116,30 +118,78 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Categories</h1>
+                        <h1 class="mt-4">produits</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Liste des Categories</li>
+                            <li class="breadcrumb-item active">Liste des produits</li>
                         </ol>
-                        <div class="row justify-content-center">
-                            <form method="POST" action="{{ route('categorie.store') }}" enctype="multipart/form-data">
-                                @csrf
-                                <div class="row mb-3">
-                                    <label for="nom" class="col-form-label">Nom :</label>
-                                    <div class="col-md-6">
-                                        <input id="nom" type="text" class="form-control" name="nom" required autocomplete="nom" autofocus>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="image" class="col-form-label">image :</label>
-                                    <div class="col-md-6">
-                                        <input id="image" type="file" accept="image/png, image/gif, image/jpeg" class="form-control" name="image" required autocomplete="image" autofocus>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <button class="btn btn-success w-25">Ajouter</button>
-                                </div>
-                            </form>
-                            
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <ul class="d-flex justify-content-between align-items-center" style="list-style-type: none">
+                                    <li>
+                                        <i class="fas fa-table me-1"></i>produit Disponible
+                                    </li>
+                                    <li>
+                                        <a class="btn btn-success" 
+                                        {{-- href="{{ route('produit.create') }}" --}}
+                                        >Ajouter produit</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>image</th>
+                                            <th>designation</th>
+                                            <th>prix</th>
+                                            <th>qantité de stock</th>
+                                            <th>TVA</th>
+                                            <th>rating</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{-- "designation",
+                    "description",
+                    'prix',
+                    "image",
+                    "qte_stock",
+                    "tva",
+                    "rating",
+                    'propiete_id',
+                    'marque_id',
+                    'fournisseur_id',
+                    'categorie_id' --}}
+                                        @foreach ($produits as $produit)
+                                            <tr>
+                                                <td><div class="justify-content-center d-flex">
+                                                    <img src="{{ asset($produit->image) }}" width="120px" height="100px" alt="Image">
+                                                </div>
+                                                </td>
+                                                <td>{{ $produit->designation }}</td>
+                                                <td>{{ $produit->prix }}</td>
+                                                <td>{{ $produit->qte_stock }}</td>
+                                                <td>{{ $produit->tva }}</td>
+                                                <td>{{ $produit->rating }}</td>
+                                                <td>
+                                                    <a 
+                                                    href="{{ route('produit.show', $produit) }}" 
+                                                     class="btn btn-info">show</a>
+                                                    <a 
+                                                    {{-- href="{{ route('produit.edit', $produit->id) }}"  --}}
+                                                     class="btn btn-warning">edit</a>
+                                                    <div class="d-inline-block">
+                                                    <form method="POST" action="{{ route('produit.destroy', $produit) }}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                                                    </form></div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </main>
