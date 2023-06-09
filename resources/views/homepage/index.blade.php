@@ -11,7 +11,7 @@
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
-                    @forelse ( $allProducts as $product)
+                    {{-- @forelse ( $allProducts as $product) --}}
 
                     <div class="col mb-5">
                         <a href="#" class="text-decoration-none">
@@ -24,7 +24,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder" style="color: black">{{ $product->designation }}</h5>
+                                    <h5 class="fw-bolder" style="color: black"></h5>
                                     <!-- Product reviews-->
                                     <div class="d-flex justify-content-center small text-warning mb-2">
                                         <div class="bi-star-fill"></div>
@@ -35,8 +35,7 @@
                                     </div>
                                 </a>
                                     <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">{{ number_format($product->prix + ($product->prix * 0.25), 2) }}</span>
-                                    {{  $product->prix }} MAD
+                                    <span class="text-muted text-decoration-line-through"> MAD
                                 </div>
                             </div>
                         
@@ -47,11 +46,6 @@
                         </div>
                     </div>
                         
-                    @empty
-                        
-                    @endforelse
-     
-
 
                 </div> 
             </div>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductCotroller;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +16,7 @@ use App\Http\Controllers\ProductCotroller;
 */
 
 Route::get('/', function () {
-    // return view('homepage.index');
-    // return view('welcome');
-
-    return redirect()->route('product.index');
+    return view('layouts.app');
 });
 
 // Route::get('/', function () {  //faute
@@ -30,10 +28,7 @@ Route::group([
     'prefix' => 'visiteur', 
     'as' => '.guests'
     ], function () {
-    // routes des visiteurs
-
-
-    
+        Route::get("/home", []);
     
     Route::group([
         'middleware' => 'auth', 
@@ -78,9 +73,5 @@ Route::get('/categories', function () {
 Route::get('/add-categorie', function () {
     return view('admin.ajouter-categorie');
 });
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
