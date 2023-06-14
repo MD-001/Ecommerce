@@ -95,4 +95,7 @@ Route::get('/add-categorie', function () {
 Route::Resource('/categorie', CategorieController::class);
 Route::Resource('/produit', ProduitController::class);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');Auth::routes();
+
+Auth::routes();
+Auth::routes(['verify'=>true]);
