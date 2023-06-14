@@ -1,14 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="conta">
     
     
-    <div class="row justify-content-center">
+    <div class="row justify-content-center ">
                         {{-- my login --}}
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
-                                        <section class="mt-5" style="height:100vh;">
+                                        <section class="mt-5 mb-3 " style="">
                                             <div class="container py-5 ">
                                             <div class="row d-flex justify-content-center align-items-center h-100">
                                                 <div class="col col-xl-10">
@@ -92,5 +91,5 @@
         
 
     </div>
-</div>
+
 @endsection

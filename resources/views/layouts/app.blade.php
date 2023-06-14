@@ -26,7 +26,8 @@
 	<div class="app">
 		{{-- Blurs the page when the search component drops --}}
 		<div class="layer"></div>
-
+{{--   --}}
+@if ( !(request()->fullUrlIs('*register*') || request()->fullUrlIs('*login*')) )
 		{{-- search component --}}
 		<div class="search-overlay w-100">
 
@@ -270,6 +271,8 @@
 				</div>
 			</div>
 		</div>
+{{--  --}}
+@endif
 
 		{{-- <!-- Right Side Of Navbar -->
 					<ul class="navbar-nav ms-auto">
