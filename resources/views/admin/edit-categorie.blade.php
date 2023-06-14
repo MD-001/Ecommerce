@@ -10,8 +10,7 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="admin/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-            @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
+        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -121,25 +120,32 @@
                             <li class="breadcrumb-item active">Liste des Categories</li>
                         </ol>
                         <div class="row justify-content-center">
-                            <form method="POST" action="{{ route('categorie.store') }}" enctype="multipart/form-data">
-                                @csrf
+                            <form 
+                            method="POST" 
+                            action="{{ route('categorie.update', $categorie->id) }}"
+                            enctype="multipart/form-data"
+                            >
+                            @csrf
+                            @method('PUT')
+
                                 <div class="row mb-3">
-                                    <label for="nom" class="col-form-label">Nom :</label>
+                                    <label for="nom" class=" col-form-label">Nom :</label>
                                     <div class="col-md-6">
-                                        <input id="nom" type="text" class="form-control" name="nom" required autocomplete="nom" autofocus>
+                                        <input id="nom" type="text" class="form-control" name="nom" required autocomplete="nom" value="{{ $categorie->nom }}" autofocus>
                                     </div>
                                 </div>
+
                                 <div class="row mb-3">
-                                    <label for="image" class="col-form-label">image :</label>
+                                    <label for="image" class="col-form-label">Image :</label>
                                     <div class="col-md-6">
-                                        <input id="image" type="file" accept="image/png, image/gif, image/jpeg" class="form-control" name="image" required autocomplete="image" autofocus>
+                                        <input id="image" type="file" accept="image/png, image/gif, image/jpeg" class="form-control" name="image" autocomplete="name" autofocus>
+                                        <img src="{{ asset($categorie->image) }}" width="100px" />
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <button class="btn btn-success w-25">Ajouter</button>
+                                    <button class="btn btn-success w-25">Editer</button>
                                 </div>
                             </form>
-                            
                         </div>
                     </div>
                 </main>

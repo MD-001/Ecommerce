@@ -9,6 +9,7 @@ class Produit extends Model
 {
     use HasFactory;
     protected $table = "produits";
+    protected $with = ['categorie', 'fournisseur', 'propriete', 'marque', 'commentaire'];
     protected $fillable = [
                     "designation",
                     "description",
@@ -17,10 +18,32 @@ class Produit extends Model
                     "qte_stock",
                     "tva",
                     "rating",
-                    'propiete_id',
+                    'propriete_id',
                     'marque_id',
                     'fournisseur_id',
-                    'categorie_id'
+                    'categorie_id',
+                    'nom',
+                    'image',
                     ];
     protected $primaryKey = "ref";
+    public function categorie()
+    {
+        return $this->belongsTo(Categorie::class);
+    }
+    public function marque()
+    {
+        return $this->belongsTo(Marque::class);
+    }
+    public function propriete()
+    {
+        return $this->belongsTo(Propriete::class);
+    }
+    public function fournisseur()
+    {
+        return $this->belongsTo(Fournisseur::class);
+    }
+    public function commentaire()
+    {
+        return $this->hasMany(Commentaire::class);
+    }
 }

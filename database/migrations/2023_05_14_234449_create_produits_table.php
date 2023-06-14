@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer("qte_stock");
             $table->integer("tva");
             $table->tinyInteger('rating')->between(1, 5);
-            $table->foreignId('propiete_id')->constrained('proprietes','id')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('propriete_id')->constrained('proprietes','id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('marque_id')->constrained('marques','id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('fournisseur_id')->constrained('fournisseurs','id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('categorie_id')->constrained('categories','id')->onUpdate('cascade')->onDelete('cascade');
