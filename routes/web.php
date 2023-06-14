@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\CategorieController;
+use App\Models\Produit;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductCotroller;
 use App\Http\Controllers\ProduitController;
-use App\Models\Produit;
+use App\Http\Controllers\CategorieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,16 +18,20 @@ use App\Models\Produit;
 |
 */
 
+
+Auth::routes();
+Auth::routes(['verify' => true]);
+
 Route::get('/', function () {
     return view('layouts.app');
 });
 
 Route::get('/shop/index', function () {
-    return view('homepage.index');
+    return view('shop-pages.index');
 });
 
 Route::get('/shop/ajouter', function () {
-    return view('homepage.ajouterProduit');
+    return view('shop-pages.productsByCategorie');
 });
 
 Route::group([
@@ -66,6 +71,14 @@ Route::get('/show-product', function () {
 
 Route::get('/dashboard', function () {
     return view('admin.index');
+});
+
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
+Route::get('/register', function () {
+    return view('auth.register');
 });
 
 // Route::get('/add-product', function () {
