@@ -21,9 +21,13 @@ Route::get('/', function () {
     return view('layouts.app');
 });
 
-// Route::get('/', function () {  //faute
-//     return view('auth.login');
-// })->middleware('guest');
+Route::get('/shop/index', function () {
+    return view('homepage.index');
+});
+
+Route::get('/shop/ajouter', function () {
+    return view('homepage.ajouterProduit');
+});
 
 Route::group([
     'middleware' => 'guest', 
