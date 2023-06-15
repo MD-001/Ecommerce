@@ -1,8 +1,8 @@
 @extends('layouts.app')
 <title>Products / Categorie Name</title>
+
 @section('content')
-	
-    <div class="directory-container px-lg-5">
+    {{-- <div class="directory-container px-lg-5">
 		<div class="directory-links">
 			<a href="#">Home</a> <span>/</span>
 			<a href="#">Categorie</a>
@@ -60,5 +60,21 @@
 				@endfor
 			</div>
 		</div>
-	</section>
+	</section> --}}
+
+    <div class="filter-overlay">
+        <form action="">
+            <div class="filter-container">
+                <h4>Filtres</h5>
+                <div class="filrer-par-cout">
+                    <label for="cout">Gamme De Prix</label>
+                    <input type="range" name="cout" id="cout">
+                </div>
+            </div>
+            <div class="filter-confirmer">
+                <button>Annuler</button>
+                <button>Confirmer</button>
+            </div>
+        </form>
+    </div>
 @endsection
