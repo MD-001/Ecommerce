@@ -4,7 +4,7 @@
     @section('content')
     {{-- carousel --}}
 			<section class="py-4">
-				<div class="px-lg-5 container-fluid d-flex justify-content-center px-4">
+				<div class="px-lg-5 container-fluid d-flex justify-content-center">
 					<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
 						<div class="carousel-inner">
 							@for ($a = 0; $a < 5; $a++)
@@ -65,15 +65,15 @@
 			</section> --}}
 
 			{{-- sliders --}}
-			<section class="slider-container mt-2 px-5">
+			<section class="container mb-4 slider-container">
 				<x-product-slider />
 			</section>
 
-			<section class="slider-container mt-5 px-5">
+			<section class="container mb-4 slider-container">
 				<x-product-slider />
 			</section>
 
-			<section class="slider-container mt-5 px-5">
+			<section class="container mb-4 slider-container">
 				<x-product-slider />
 			</section>
 

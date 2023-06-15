@@ -32,250 +32,248 @@
 
 <body>
 	<div class="app">
+		{{-- back to top button --}}
+		<a href="#" class="to-top">
+			<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-chevron-up"
+				viewBox="0 0 16 16">
+				<path fill-rule="evenodd"
+					d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z" />
+			</svg>
+		</a>
+
 		{{-- Blurs the page when the search component drops --}}
 		<div class="layer"></div>
-{{--   --}}
-@if ( !(request()->fullUrlIs('*register*') || request()->fullUrlIs('*login*')) )
-		{{-- search component --}}
-		<div class="search-overlay w-100">
+		{{--   --}}
+		@if (!(request()->fullUrlIs('*register*') || request()->fullUrlIs('*login*')))
+			{{-- search component --}}
+			<div class="search-overlay w-100">
 
-			{{-- search overlay --}}
-			<div class="search-container">
-				<form class="col-md-10 offset-1 m-0" action="">
-					<div class="search-bar">
-						<button>
-							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-								class="bi bi-search search-icon" viewBox="0 0 16 16">
-								<path
-									d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-							</svg>
-						</button>
-						<input type="text" class="form-control" placeholder="Search for anything">
-					</div>
-				</form>
-				<div class="col-md-1 close-overlay">
-					<button>
-						<svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-x"
-							viewBox="0 0 16 16">
-							<path
-								d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-						</svg>
-					</button>
-				</div>
-			</div>
-			<hr class="m-0">
-			{{-- items overlay --}}
-			<div class="items-overlay">
-				<div class="col-md-6 categories">
-					<h3>Popular Categories</h3>
-					<ul class="m-0 p-0">
-						<li>
-							<a href="#">
-								<div class="categorie-container">
-									<img class="image" src="https://picsum.photos/100/100" alt="...">
-									<div class="categorie-text">
-										<h5 class="m-0">Categorie</h5>
-										<div class="categorie-see-more">
-											<span>See more</span> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-												fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-												<path fill-rule="evenodd"
-													d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-											</svg>
-										</div>
-									</div>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<div class="categorie-container">
-									<img class="image" src="https://picsum.photos/100/100" alt="...">
-									<div class="categorie-text">
-										<h5 class="m-0">Categorie</h5>
-										<div class="categorie-see-more">
-											<span>See more</span> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-												fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-												<path fill-rule="evenodd"
-													d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-											</svg>
-										</div>
-									</div>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<div class="categorie-container">
-									<img class="image" src="https://picsum.photos/100/100" alt="...">
-									<div class="categorie-text">
-										<h5 class="m-0">Categorie</h5>
-										<div class="categorie-see-more">
-											<span>See more</span> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-												fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-												<path fill-rule="evenodd"
-													d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-											</svg>
-										</div>
-									</div>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<div class="categorie-container">
-									<img class="image" src="https://picsum.photos/100/100" alt="...">
-									<div class="categorie-text">
-										<h5 class="m-0">Categorie</h5>
-										<div class="categorie-see-more">
-											<span>See more</span> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-												fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-												<path fill-rule="evenodd"
-													d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-											</svg>
-										</div>
-									</div>
-								</div>
-							</a>
-						</li>
-					</ul>
-				</div>
-				<div class="col-md-6 products">
-					<h3>Products of the day</h3>
-					<ul class="m-0 p-0">
-						<li>
-							<a href="#">
-								<div class="product-container">
-									<img class="image" src="https://picsum.photos/100/100" alt="...">
-									<div class="product-text">
-										<h5 class="m-0">product</h5>
-										<div class="product-price">
-											<span>Prev</span> <span>new</span>
-										</div>
-									</div>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<div class="product-container">
-									<img class="image" src="https://picsum.photos/100/100" alt="...">
-									<div class="product-text">
-										<h5 class="m-0">product</h5>
-										<div class="product-price">
-											<span>Prev</span> <span>new</span>
-										</div>
-									</div>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<div class="product-container">
-									<img class="image" src="https://picsum.photos/100/100" alt="...">
-									<div class="product-text">
-										<h5 class="m-0">product</h5>
-										<div class="product-price">
-											<span>Prev</span> <span>new</span>
-										</div>
-									</div>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<div class="product-container">
-									<img class="image" src="https://picsum.photos/100/100" alt="...">
-									<div class="product-text">
-										<h5 class="m-0">product</h5>
-										<div class="product-price">
-											<span>Prev</span> <span>new</span>
-										</div>
-									</div>
-								</div>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-
-		{{-- navbar --}}
-		<div class="container-fluid p-0">
-			<nav class="navbar navbar-expand-lg d-flex flex-column justify-content-center px-4">
-
-				<div class="row w-100 d-flex align-items-center justify-content-evenly">
-					{{-- Left-side of the navbar --}}
-					<div class="col-md-4 d-flex justify-content-md-start mb-md-0 mb-3">
-						<div class="search-trigger">
+				{{-- search overlay --}}
+				<div class="search-container">
+					<form class="col-md-10 offset-1 m-0" action="">
+						<div class="search-bar">
 							<button>
-								<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor"
-									class="bi bi-search" viewBox="0 0 16 16">
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+									class="bi bi-search search-icon" viewBox="0 0 16 16">
 									<path
 										d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
 								</svg>
-								<span class="ps-3">Search</span>
 							</button>
+							<input type="text" class="form-control" placeholder="Search for anything">
 						</div>
+					</form>
+					<div class="col-md-1 close-overlay">
+						<button>
+							<svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-x"
+								viewBox="0 0 16 16">
+								<path
+									d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+							</svg>
+						</button>
 					</div>
-
-					{{-- Middle-side of the navbar --}}
-					<div class="col-md-4 d-flex justify-content-center">
-						<a class="text-center" href="#">
-							<img width="200px" src="{{ asset('storage/Logo/'.'logo.png') }}" alt="Logo">
-						</a>
-					</div>
-
-					{{-- Right-side of the navbar --}}
-					<div class="col-md-4 d-flex justify-content-md-end">
-						<ul id="nav-icons" class="navbar-nav d-flex justify-content-center align-items-center mb-lg-0 gap-2">
-							<li class="nav-item">
-								<a class="nav-link" href="">
-									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
-										class="bi bi-heart" viewBox="0 0 16 16">
-										<path
-											d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-									</svg>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link " href="{{ route('client-my-cart') }}">
-									<div class="d-flex">
-                           
-										<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-										class="bi bi-cart3" viewBox="0 0 16 16">
-										<path
-											d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-										</svg>  
-										
-										<span class="fs-5">({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }})</span>
+				</div>
+				<hr class="m-0">
+				{{-- items overlay --}}
+				<div class="items-overlay">
+					<div class="col-md-6 categories">
+						<h3>Popular Categories</h3>
+						<ul class="m-0 p-0">
+							<li>
+								<a href="#">
+									<div class="categorie-container">
+										<img class="image" src="https://picsum.photos/100/100" alt="...">
+										<div class="categorie-text">
+											<h5 class="m-0">Categorie</h5>
+											<div class="categorie-see-more">
+												<span>See more</span> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+													fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+													<path fill-rule="evenodd"
+														d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+												</svg>
+											</div>
+										</div>
 									</div>
-									
-									
 								</a>
-
-							
-								
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="{{ route('register') }}">
-									<button class="btn btn-outline-success">
-										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-											class="bi bi-person" viewBox="0 0 16 16">
-											<path
-												d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
-										</svg>
-										Sign up
-									</button>
+							<li>
+								<a href="#">
+									<div class="categorie-container">
+										<img class="image" src="https://picsum.photos/100/100" alt="...">
+										<div class="categorie-text">
+											<h5 class="m-0">Categorie</h5>
+											<div class="categorie-see-more">
+												<span>See more</span> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+													fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+													<path fill-rule="evenodd"
+														d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+												</svg>
+											</div>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<div class="categorie-container">
+										<img class="image" src="https://picsum.photos/100/100" alt="...">
+										<div class="categorie-text">
+											<h5 class="m-0">Categorie</h5>
+											<div class="categorie-see-more">
+												<span>See more</span> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+													fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+													<path fill-rule="evenodd"
+														d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+												</svg>
+											</div>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<div class="categorie-container">
+										<img class="image" src="https://picsum.photos/100/100" alt="...">
+										<div class="categorie-text">
+											<h5 class="m-0">Categorie</h5>
+											<div class="categorie-see-more">
+												<span>See more</span> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+													fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+													<path fill-rule="evenodd"
+														d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+												</svg>
+											</div>
+										</div>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-6 products">
+						<h3>Products of the day</h3>
+						<ul class="m-0 p-0">
+							<li>
+								<a href="#">
+									<div class="product-container">
+										<img class="image" src="https://picsum.photos/100/100" alt="...">
+										<div class="product-text">
+											<h5 class="m-0">product</h5>
+											<div class="product-price">
+												<span>Prev</span> <span>new</span>
+											</div>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<div class="product-container">
+										<img class="image" src="https://picsum.photos/100/100" alt="...">
+										<div class="product-text">
+											<h5 class="m-0">product</h5>
+											<div class="product-price">
+												<span>Prev</span> <span>new</span>
+											</div>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<div class="product-container">
+										<img class="image" src="https://picsum.photos/100/100" alt="...">
+										<div class="product-text">
+											<h5 class="m-0">product</h5>
+											<div class="product-price">
+												<span>Prev</span> <span>new</span>
+											</div>
+										</div>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<div class="product-container">
+										<img class="image" src="https://picsum.photos/100/100" alt="...">
+										<div class="product-text">
+											<h5 class="m-0">product</h5>
+											<div class="product-price">
+												<span>Prev</span> <span>new</span>
+											</div>
+										</div>
+									</div>
 								</a>
 							</li>
 						</ul>
 					</div>
 				</div>
-			</nav>
-			{{-- navbar-categories --}}
-			<div class="navbar-categories d-flex align-items-center">
-				<div class="container-fluid">
-					<div class="row d-flex justify-content-center align-items-center gap-1">
+			</div>
+
+			{{-- navbar --}}
+			<div class="header">
+				<nav class="navbar navbar-expand-lg d-flex flex-column justify-content-center">
+
+					<div class="row w-100 d-flex align-items-center justify-content-evenly">
+						{{-- Left-side of the navbar --}}
+						<div class="col-md-4 d-flex justify-content-md-start mb-md-0 mb-3">
+							<div class="search-trigger">
+								<button>
+									<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor"
+										class="bi bi-search" viewBox="0 0 16 16">
+										<path
+											d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+									</svg>
+									<span class="ps-3">Search</span>
+								</button>
+							</div>
+						</div>
+
+						{{-- Middle-side of the navbar --}}
+						<div class="col-md-4 d-flex justify-content-center">
+							<a class="text-center" href="#">
+								<img width="200px" src="{{ asset('storage/Logo/' . 'logo.png') }}" alt="Logo">
+							</a>
+						</div>
+
+						{{-- Right-side of the navbar --}}
+						<div class="col-md-4 d-flex justify-content-md-end">
+							<ul id="nav-icons" class="navbar-nav d-flex justify-content-center align-items-center mb-lg-0 gap-2">
+								<li class="nav-item">
+									<a class="nav-link" href="">
+										<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+											class="bi bi-heart" viewBox="0 0 16 16">
+											<path
+												d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+										</svg>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="">
+										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+											class="bi bi-cart3" viewBox="0 0 16 16">
+											<path
+												d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+										</svg>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ route('register') }}">
+										<button class="btn btn-outline-success">
+											<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+												class="bi bi-person" viewBox="0 0 16 16">
+												<path
+													d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+											</svg>
+											Sign up
+										</button>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+				{{-- navbar-categories --}}
+				<div class="navbar-categories">
+					<div class="row d-flex justify-content-center align-items-center">
 						<div class="col-lg-1">
 							<a href="#">All</a>
 						</div>
@@ -290,9 +288,8 @@
 					</div>
 				</div>
 			</div>
-		</div>
-{{--  --}}
-@endif
+		@endif
+		{{--  --}}
 
 		{{-- <!-- Right Side Of Navbar -->
 					<ul class="navbar-nav ms-auto">
@@ -338,7 +335,7 @@
 						@endguest
 					</ul> --}}
 
-		<main class="mb-5">
+		<main>
 			@yield('content')
 			@include('sweetalert::alert')
 
@@ -472,6 +469,29 @@
 	</div>
 
 	<script>
+		//scroll to-top 
+		const toTop = document.querySelector(".to-top");
+		window.addEventListener("scroll", () => {
+			if (window.pageYOffset > 100 && window.pageYOffset + window.innerHeight < document.documentElement
+				.scrollHeight - 100) {
+				toTop.classList.add("active");
+			} else {
+				toTop.classList.remove("active");
+			}
+		})
+
+		//navbar scroll down
+		var prevScrollpos = window.pageYOffset;
+		window.onscroll = function() {
+			var currentScrollPos = window.pageYOffset;
+			if (prevScrollpos > currentScrollPos) {
+				document.querySelector(".header").style.top = "0";
+			} else {
+				document.querySelector(".header").style.top = "-150px";
+			}
+			prevScrollpos = currentScrollPos;
+		}
+
 		// search script
 		const showButton = document.querySelector('.search-trigger');
 		const hideButton = document.querySelector('.close-overlay');

@@ -1,3 +1,5 @@
+@extends('layouts.app')
+<title>Products / Categorie Name</title>
 
 @extends('layouts.app')
 
