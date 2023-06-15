@@ -4,6 +4,7 @@ use App\Http\Controllers\CategorieController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductCotroller;
 use App\Http\Controllers\ProduitController;
+use App\Http\Controllers\ClientController;
 use App\Models\Produit;
 
 /*
@@ -56,6 +57,8 @@ Route::group([
 
 
 Route::resource('/product', ProductCotroller::class)->middleware('guest');
+Route::get('/client-my-cart', [ClientController::class, 'showMyCart'])->name('client-my-cart');
+Route::resource('/client', ClientController::class);
 
 Route::get('/all-product', function () {
     return view('homepage.index');

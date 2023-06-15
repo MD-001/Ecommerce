@@ -17,6 +17,13 @@
 	<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 	<!-- Bootstrap icons-->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+	{{-- my-cart link --}}
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	  
 
 	<!-- Scripts -->
 	@vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -228,7 +235,7 @@
 								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="">
+								<a class="nav-link" href="{{ route('client-my-cart') }}">
 									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
 										class="bi bi-cart3" viewBox="0 0 16 16">
 										<path
