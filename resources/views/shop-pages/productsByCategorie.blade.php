@@ -35,7 +35,6 @@
 						<div class="form-container">
 							<div class="form-header">
 								<h2>Filtres</h2>
-								<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 							</div>
 							<div class="range-prix">
 								<h5>Gamme De Prix</h5>
@@ -62,7 +61,7 @@
 							</div>
 						</div>
 						<div class="form-confirmer">
-							<button>Annuler</button>
+							<button type="button" data-bs-dismiss="offcanvas" aria-label="Close">Annuler</button>
 							<button>Confirmer</button>
 						</div>
 					</form>
