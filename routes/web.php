@@ -34,6 +34,10 @@ Route::get('/shop/ajouter', function () {
     return view('shop-pages.productsByCategorie');
 });
 
+Route::get('/shop/product', function () {
+    return view('shop-item.index');
+});
+
 Route::group([
     'middleware' => 'guest', 
     'prefix' => 'visiteur', 

@@ -24,6 +24,15 @@
 
 <body>
 	<div class="app">
+		{{-- back to top button --}}
+		<a href="#" class="to-top">
+			<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-chevron-up"
+				viewBox="0 0 16 16">
+				<path fill-rule="evenodd"
+					d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z" />
+			</svg>
+		</a>
+
 		{{-- Blurs the page when the search component drops --}}
 		<div class="layer"></div>
 		{{--   --}}
@@ -449,6 +458,16 @@
 	</div>
 
 	<script>
+		//scroll to-top 
+		const toTop = document.querySelector(".to-top");
+		window.addEventListener("scroll", () => {
+			if (window.pageYOffset > 100) {
+				toTop.classList.add("active");
+			} else {
+				toTop.classList.remove("active");
+			}
+		})
+
 		//navbar scroll down
 		var prevScrollpos = window.pageYOffset;
 		window.onscroll = function() {

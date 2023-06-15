@@ -2,40 +2,88 @@
 <title>Products / Categorie Name</title>
 
 @section('content')
-    {{-- <div class="directory-container px-lg-5">
+	{{-- directory container --}}
+	<div class="directory-container px-lg-5">
 		<div class="directory-links">
-			<a href="#">Home</a> <span>/</span>
+			<a href="{{ url('/shop/index') }}">Home</a> <span>/</span>
 			<a href="#">Categorie</a>
 		</div>
 	</div>
 
-	<div class="filter-container px-lg-5">
-		<div class="filter">
-			<button>
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders"
-					viewBox="0 0 16 16">
-					<path fill-rule="evenodd"
-						d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z" />
-				</svg>
-                <span>Tous les filtres</span>
-			</button>
-		</div>
-		<div class="sort-by">
-			<span>Sort by:</span>
-			<select name="" id="">
-				<option value="Pertinence">Pertinence</option>
-				<option value="Le plus récent">Le plus récent</option>
-				<option value="Le moins cher">Le moins cher</option>
-				<option value="Le plus cher">Le plus cher</option>
-				<option value="Les mieux notés">Les mieux notés</option>
-			</select>
-		</div>
-	</div>
-
+	{{-- all products --}}
 	<section class="py-3">
 		<div class="px-lg-5 container px-4">
+			{{-- filter container --}}
+			<div class="filter-container pb-4">
+				{{-- off-canvas button --}}
+				<div class="filter">
+					<button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+						aria-controls="offcanvasWithBothOptions">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders"
+							viewBox="0 0 16 16">
+							<path fill-rule="evenodd"
+								d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z" />
+						</svg>
+						<span>Tous les filtres</span>
+					</button>
+				</div>
+
+				{{-- off-canvas --}}
+				<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+					aria-labelledby="offcanvasWithBothOptionsLabel">
+					<form action="">
+						<div class="form-container">
+							<div class="form-header">
+								<h2>Filtres</h2>
+								<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+							</div>
+							<div class="range-prix">
+								<h5>Gamme De Prix</h5>
+								<input type="range" class="form-range" name="prix" id="prix">
+							</div>
+							<div class="checkbox-prix">
+								<h5>Filtrer Par Prix</h5>
+								<div>
+									<input class="form-check-input" type="checkbox" name="" id="">
+									<label for="">$50 - $100L (208)</label>
+								</div>
+								<div>
+									<input class="form-check-input" type="checkbox" name="" id="">
+									<label for="">$100L - $500 (311)</label>
+								</div>
+								<div>
+									<input class="form-check-input" type="checkbox" name="" id="">
+									<label for="">$500 - $1,000 (485)</label>
+								</div>
+								<div>
+									<input class="form-check-input" type="checkbox" name="" id="">
+									<label for="">$1,000 - $5,000 (213)</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-confirmer">
+							<button>Annuler</button>
+							<button>Confirmer</button>
+						</div>
+					</form>
+				</div>
+
+				{{-- sort-by --}}
+				<div class="sort-by">
+					<span>Sort by:</span>
+					<select name="" id="">
+						<option value="Pertinence">Pertinence</option>
+						<option value="Le plus récent">Le plus récent</option>
+						<option value="Le moins cher">Le moins cher</option>
+						<option value="Le plus cher">Le plus cher</option>
+						<option value="Les mieux notés">Les mieux notés</option>
+					</select>
+				</div>
+			</div>
+            
+            {{-- products section --}}
 			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-				@for ($a = 0; $a < 30; $a++)
+				@for ($a = 0; $a < 20; $a++)
 					<div class="col mb-5">
 						<a class="slider-item" href="">
 							<div class="slider-item-image">
@@ -60,21 +108,5 @@
 				@endfor
 			</div>
 		</div>
-	</section> --}}
-
-    <div class="filter-overlay">
-        <form action="">
-            <div class="filter-container">
-                <h4>Filtres</h5>
-                <div class="filrer-par-cout">
-                    <label for="cout">Gamme De Prix</label>
-                    <input type="range" name="cout" id="cout">
-                </div>
-            </div>
-            <div class="filter-confirmer">
-                <button>Annuler</button>
-                <button>Confirmer</button>
-            </div>
-        </form>
-    </div>
+	</section>
 @endsection

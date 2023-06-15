@@ -7,10 +7,44 @@
 // Bootstrap
 @import "bootstrap/scss/bootstrap";
 
+html {
+    scroll-behavior: smooth;
+}
 
-body, h1, h2, h3, h4, h5, p, a, button, input {
+body, h1, h2, h3, h4, h5, p, a, button, input, label {
     font-family: 'Inter', sans-serif;
 }
+
+//to up button
+.to-top {
+    background-color: #0E5E6F;
+    position: fixed;
+    bottom: 16px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: white;
+    text-decoration: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .3s;
+}
+
+.to-top.active {
+    bottom: 20px;
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.to-top svg {
+    fill: white;
+}
+
 //header
 .header {
     position: sticky; 
@@ -22,7 +56,7 @@ body, h1, h2, h3, h4, h5, p, a, button, input {
 
 //navbar
 .navbar {
-    height: 80px;
+    height: 90px;
     font-size: 1rem;
     padding: 0rem 1.5rem;
     font-weight: 200;
@@ -287,7 +321,6 @@ body, h1, h2, h3, h4, h5, p, a, button, input {
     bottom: 0;
 }
 
-
 .section-slider-header .show-more {
     width: 100%;
     height: 100%;
@@ -428,7 +461,6 @@ body, h1, h2, h3, h4, h5, p, a, button, input {
 }
 
 //footer subscribe
-
 .footer-subscribe {
     display: flex;
     flex-direction: column;
@@ -631,42 +663,68 @@ body, h1, h2, h3, h4, h5, p, a, button, input {
 }
 
 //filter overlay
-.filter-overlay {
-    padding: 3rem 2rem;
-    width: 400px;
-    height: 100vh;
+.offcanvas {
+    width: 500px !important;
+    padding: 3rem 3rem 0rem;
+}
+
+.offcanvas h5 {
+    margin-bottom: 1rem ;
+}
+
+.offcanvas form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.offcanvas .form-container {
     overflow: hidden;
-    background-color: white;
-    z-index: 1000;
-    position: absolute;
-    top: 0;
-    left: 0;
 }
 
-.filter-overlay form {
-    display: flex;
-    flex-direction: column;
-
-}
-
-.filter-overlay form {
-    display: flex;
-    flex-direction: column;
-    
-}
-
-.filter-confirmer {
-    padding: 0.5rem;
+.offcanvas .form-header {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    height: 50px;
-    position: absolute;
-    bottom: 0;
 }
 
-.filter-confirmer button {
+.offcanvas .form-container > div {
+    padding: 0rem 0rem 2rem;
+}
+
+.offcanvas .range-prix  {
+    display: flex;
+    flex-direction: column;
+}
+
+.offcanvas .chechbox-prix {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.offcanvas .chechbox-prix > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-confirmer {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    height: 50px;
+}
+
+.form-confirmer button {
     width: 0.5rem 2rem;
     background-color: transparent;
+    border-radius: 5px;
+    padding: 1rem 3rem;
+    font-size: 1.3rem;
+    font-weight: 600;
 }
