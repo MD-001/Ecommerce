@@ -27,6 +27,7 @@
 
 	<!-- Scripts -->
 	@vite(['resources/sass/app.scss', 'resources/js/app.js'])
+	@livewireStyles
 </head>
 
 <body>
@@ -237,13 +238,23 @@
 								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{ route('client-my-cart') }}">
-									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+								<a class="nav-link " href="{{ route('client-my-cart') }}">
+									<div class="d-flex">
+                           
+										<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
 										class="bi bi-cart3" viewBox="0 0 16 16">
 										<path
 											d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-									</svg>
+										</svg>  
+										
+										<span class="fs-5">({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }})</span>
+									</div>
+									
+									
 								</a>
+
+							
+								
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="{{ route('register') }}">
@@ -329,7 +340,10 @@
 
 		<main class="mb-5">
 			@yield('content')
+			@include('sweetalert::alert')
+
 			@yield('script')
+			
 		</main>
 
 		<footer>
@@ -510,6 +524,8 @@
 			});
 		});
 	</script>
+
+@livewireScripts
 </body>
 
 </html>

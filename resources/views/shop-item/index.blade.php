@@ -5,6 +5,16 @@
        
        <!-- Product section-->
         <section class="py-5">
+            @if (session('message'))
+    <div class="alert alert-success w-25 d-flex" role="alert">
+        {{ session('message') }}
+    </div>
+    <script>
+        setTimeout(function(){
+            $('.alert').slideUp();
+        }, 4000);
+    </script>
+@endif
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
@@ -23,12 +33,28 @@
 
 
                         <div class="d-flex">
-                            <input class="form-control text-center me-3" id="inputQuantity" oninput="limitQuantity()" type="number" min="1" max="{{ $produit->qte_stock }}" {} value="1" style="max-width: 4rem" />
 
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                {{--  --}}
+                @if ($cart->where('id', $produit->ref)->count())
+                
+                <div class="alert alert-warning" role="alert">
+                    deja dans panier
+                  </div>
+                  
+                @else
+                    
+                
+                        <form  action="{{ route('cart.store') }}" method="POST">
+                            @csrf
+                            <input class="form-control text-center me-3" name="quantity" id="inputQuantity" oninput="limitQuantity()" type="number" min="1" max="{{ $produit->qte_stock }}" {} value="1" style="max-width: 4rem" />
+
+                             <input type="hidden" value="{{ $produit->ref }}" type="number" name="product_id" />
+                            <button class="btn btn-outline-dark flex-shrink-0" type="submit">
                                 <i class="bi-cart-fill me-1"></i>
                                 Add to cart
                             </button>
+                        </form>
+                @endif
                         </div>
                     </div>
                 </div>

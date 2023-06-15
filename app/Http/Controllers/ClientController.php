@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Produit;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class ClientController extends Controller
 {
@@ -52,14 +53,17 @@ class ClientController extends Controller
         $produit = Produit::findOrFail($id);
        
         $relatedProduct = Produit::where('categorie_id',$produit->categorie_id)->inRandomOrder()->take(4)->get();
+        $cart =Cart::content();
 
-        return view('shop-item.index', ['produit' => $produit , 'relatedProduct'=>$relatedProduct]);
+        return view('shop-item.index', ['produit' => $produit , 'relatedProduct'=>$relatedProduct, 'cart'=>$cart]);
 
     }
     public function showMyCart()
     {
+        $cart =Cart::content();
+        // dd($cart);
      
-        return view('shop-item.my-cart');
+        return view('shop-item.my-cart' ,['cart'=>$cart]);
 
     }
 
