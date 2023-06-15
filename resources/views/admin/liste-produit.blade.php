@@ -130,7 +130,7 @@
                                     </li>
                                     <li>
                                         <a class="btn btn-success" 
-                                        {{-- href="{{ route('produit.create') }}" --}}
+                                        href="{{ route('produit.create') }}"
                                         >Ajouter produit</a>
                                     </li>
                                 </ul>
@@ -176,7 +176,7 @@
                                                     href="{{ route('produit.show', $produit) }}" 
                                                      class="btn btn-info">show</a>
                                                     <a 
-                                                    {{-- href="{{ route('produit.edit', $produit->id) }}"  --}}
+                                                    href="{{ route('produit.edit', $produit) }}" 
                                                      class="btn btn-warning">edit</a>
                                                     <div class="d-inline-block">
                                                     <form method="POST" action="{{ route('produit.destroy', $produit) }}">
