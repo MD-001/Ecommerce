@@ -40,7 +40,7 @@
 
 			{{-- search overlay --}}
 			<div class="search-container">
-				<form class="col-md-10 offset-1" action="">
+				<form class="col-md-10 offset-1 m-0" action="">
 					<div class="search-bar">
 						<button>
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -219,7 +219,9 @@
 
 					{{-- Middle-side of the navbar --}}
 					<div class="col-md-4 d-flex justify-content-center">
-						<a class="text-center" href="#">Brand</a>
+						<a class="text-center" href="#">
+							<img width="200px" src="{{ asset('storage/Logo/'.'logo.png') }}" alt="Logo">
+						</a>
 					</div>
 
 					{{-- Right-side of the navbar --}}

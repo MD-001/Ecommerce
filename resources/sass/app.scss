@@ -27,21 +27,34 @@ body, h1, h2, h3, h4, h5, p, a, button, input {
 
 //navbar-categories
 .navbar-categories {
-    background-color:#FFEFD6;
+    background-color:#3A8891;
     box-shadow: 0 10px 30px 0 rgba(138, 155, 165, 0.15);
-    height: 50px;
+    height: 60px;
 }
 
 .navbar-categories .row > div a {
     text-transform: uppercase;
-    color: rgb(84, 83, 83);
+    color: white;
     text-decoration: none;
     text-align: center;
     font-weight: bold;
+    position: relative;
 }
 
-.navbar-categories .row > div a:hover {
-    color: rgb(13, 151, 107);
+.navbar-categories .row > div a:before {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    height: 2.5px;
+    width: 100%;
+    background: white;
+    transform: scalex(0);
+    transition: transform 0.2s linear;
+    }
+
+
+.navbar-categories .row > div a:hover:before {
+    transform: scalex(1);
 }
 
 #nav-icons li:nth-child(-n + 2) a {
@@ -76,7 +89,7 @@ body, h1, h2, h3, h4, h5, p, a, button, input {
 .search-container {
     display: flex;
     align-items: center;
-    justify-items: center;
+    justify-content: end;
     height: 88px;
 }
 
@@ -530,4 +543,56 @@ body, h1, h2, h3, h4, h5, p, a, button, input {
 .footer-end li a {
     width: max-content;
     color: white;
+}
+
+//products by categories file
+.directory-container {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.directory-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.directory-links a {
+    color: black;
+    text-decoration: none;
+}
+
+.directory-links a:nth-child(3) {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+.directory-links a:hover {
+    text-decoration:underline;
+}
+
+.filter-container {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.filter-container .filter button {
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    background-color: transparent;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.filter-container select {
+    padding: 0.5rem 1.5rem 0.5rem 0.25rem;
+    border-radius: 5px;
 }
