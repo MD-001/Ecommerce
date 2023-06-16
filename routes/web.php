@@ -8,8 +8,8 @@ use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\FournisseurController;
 use App\Http\Controllers\MarqueController;
-use App\Models\Fournisseur;
-
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,7 +26,9 @@ Auth::routes();
 Auth::routes(['verify' => true]);
 
 Route::get('/', function () {
-    return view('layouts.app');
+    // return view('layouts.app');
+    $produits = Produit::all();
+    return view('homepage.index', ['produits'=>$produits]);
 });
 
 Route::get('/shop/index', function () {
@@ -35,6 +37,10 @@ Route::get('/shop/index', function () {
 
 Route::get('/shop/ajouter', function () {
     return view('shop-pages.productsByCategorie');
+});
+
+Route::get('/shop/product', function () {
+    return view('shop-item.index');
 });
 
 Route::group([
@@ -64,10 +70,14 @@ Route::group([
 
 
 Route::resource('/product', ProductCotroller::class)->middleware('guest');
+Route::get('/client-my-cart', [ClientController::class, 'showMyCart'])->name('client-my-cart');
+Route::resource('/client', ClientController::class);
+Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
 
-Route::get('/all-product', function () {
+Route::get('/home-page', function () {
     return view('homepage.index');
 });
+
 Route::get('/show-product', function () {
     return view('shop-item.index');
 });
