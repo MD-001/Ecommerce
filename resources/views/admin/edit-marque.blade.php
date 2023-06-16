@@ -6,11 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Edit categorie</title>
+        <title>Edit marque</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="admin/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+            @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -50,7 +51,7 @@
                             </a>
                             <a class="nav-link" href="#">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Ajouter Categorie
+                                Ajouter marque
                             </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -115,35 +116,38 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Categories</h1>
+                        <h1 class="mt-4">marques</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Liste des Categories</li>
+                            <li class="breadcrumb-item active">Liste des marques</li>
                         </ol>
                         <div class="row justify-content-center">
-                            <form
-                            action="{{ route('categorie.update', $categorie->id) }}"
-                            method="POST" 
-                            enctype="multipart/form-data">
-                            @csrf
-                            @method('PUT')
+                            <form method="POST" action="{{ route('marque.update', $marque) }}" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
                                 <div class="row mb-3">
-                                    <label for="nom" class=" col-form-label">Nom :</label>
+                                    <label for="nom" class="col-form-label">Nom :</label>
                                     <div class="col-md-6">
-                                        <input id="nom" type="text" class="form-control" name="nom" required autocomplete="nom" value="{{ $categorie->nom }}" autofocus>
+                                        <input id="nom" type="text" class="form-control" name="nom" value="{{ $marque->nom }}" required autocomplete="nom" autofocus>
                                     </div>
                                 </div>
-
                                 <div class="row mb-3">
-                                    <label for="image" class="col-form-label">Image :</label>
+                                    <label for="libelle" class="col-form-label">libelle :</label>
                                     <div class="col-md-6">
-                                        <input id="image" type="file" accept="image/png, image/gif, image/jpeg" class="form-control" name="image" autocomplete="name" autofocus>
-                                        <img src="{{ asset($categorie->image) }}" width="100px" />
+                                        <input id="libelle" type="text" class="form-control" name="libelle" value="{{ $marque->libelle }}" required autocomplete="libelle" autofocus>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="image" class="col-form-label">image :</label>
+                                    <div class="col-md-6">
+                                        <input id="image" type="file" accept="image/png, image/gif, image/jpeg" class="form-control" name="image" autocomplete="image" autofocus>
+                                        <img src="{{ asset($marque->image) }}" width="100px" />
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <button class="btn btn-success w-25">Editer</button>
+                                    <button class="btn btn-success w-25">Update</button>
                                 </div>
                             </form>
+                            
                         </div>
                     </div>
                 </main>

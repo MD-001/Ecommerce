@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Produit;
 use App\Http\Controllers\Controller;
+use App\Models\Categorie;
+use App\Models\Fournisseur;
+use App\Models\Marque;
+use App\Models\Propriete;
 use Illuminate\Http\Request;
 
 class ProduitController extends Controller
@@ -16,27 +20,37 @@ class ProduitController extends Controller
     }
 
     public function create()
-    {
-        return view('admin.create-produit');
-    }
+{
+    $fournisseurs = Fournisseur::all();
+    $marques = Marque::all();
+    $categories = Categorie::all();
+    $proprietes = Propriete::all();
+    return view('admin.create-produit', ['fournisseurs'=>$fournisseurs, 'marques'=>$marques, 'categories'=>$categories, 'proprietes'=>$proprietes]);
+}
+
 
     public function store(Request $request)
     {
         $produit = new Produit;
-        $produit->designation = $request->designation;
-        $produit->description = $request->description;
-        $produit->prix = $request->prix;
-        $produit->image = $request->image;
-        $produit->qte_stock = $request->qte_stock;
-        $produit->tva = $request->tva;
-        $produit->rating = $request->rating;
-        $produit->propriete_id = 2;
-        $produit->marque_id = 2;
-        $produit->fournisseur_id = 5;
-        $produit->categorie_id = 2;
-        $produit->save();
-        
-        return redirect()->route('produit.index');
+    $produit->designation = $request->designation;
+    $produit->description = $request->description;
+    $produit->prix = $request->prix;
+    if ($request->hasFile('image')) {
+        $fileName = time() . $request->file('image')->getClientOriginalName();
+        $path = $request->file('image')->storeAs('images', $fileName, 'public');
+        $produit->image = '/storage/' . $path;
+    } else {
+        $produit->image = ''; // ou une valeur par défaut si nécessaire
+    }
+    $produit->qte_stock = $request->qte_stock;
+    $produit->tva = $request->tva;
+    $produit->rating = $request->rating;
+    $produit->propriete_id = $request->propriete_id;
+    $produit->marque_id = $request->marque_id;
+    $produit->fournisseur_id = $request->fournisseur_id;
+    $produit->categorie_id = $request->categorie_id;
+    $produit->save();
+    return redirect()->route('produit.index');
     }
 
     public function show(Produit $produit)
@@ -49,19 +63,33 @@ class ProduitController extends Controller
     public function edit($produit)
     {
         $produit = Produit::findOrFail($produit);
-        return view('admin.edit-produit', ['produit'=>$produit]);
+        $fournisseurs = Fournisseur::all();
+        $marques = Marque::all();
+        $categories = Categorie::all();
+        $proprietes = Propriete::all();
+        return view('admin.edit-produit', ['produit'=>$produit,'fournisseurs'=>$fournisseurs, 'marques'=>$marques, 'categories'=>$categories, 'proprietes'=>$proprietes]);
     }
 
-    public function update($id,Request $request)
+    public function update(Request $request,$produit)
     {
-        $produit = Produit::findOrFail($id);
+        $produit = Produit::findOrFail($produit);
         $produit->designation = $request->designation;
         $produit->description = $request->description;
         $produit->prix = $request->prix;
-        $produit->image = $request->image;
+        if ($request->hasFile('image')) {
+            $fileName = time() . $request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->storeAs('images', $fileName, 'public');
+            $produit->image = '/storage/' . $path;
+        } else {
+            unset($produit->image); ; // ou une valeur par défaut si nécessaire
+        }
         $produit->tva = $request->tva;
         $produit->rating = $request->rating;
-        $produit->save();
+        $produit->propriete_id = intval($request->propriete_id);
+        $produit->marque_id = intval($request->marque_id);
+        $produit->fournisseur_id = intval($request->fournisseur_id);
+        $produit->categorie_id = intval($request->categorie_id);
+        $produit->update();
         
         return redirect()->route('produit.index');
     }

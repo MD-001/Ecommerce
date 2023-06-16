@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BoutiqueVirtuelle</title>
-    <link href="{{asset('favicon.jpeg')}}" rel="icon">
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-</head>
+@extends('layouts.app')
+@section('content')
 <body>
-    <div>
+    <div class="m-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -20,9 +9,12 @@
                 </div>
                 <div class="col-md-6">
                     <h1>{{ $produit->designation }}</h1>
+                    <div class="product-details">
+                        <span style="margin-left:50px"><h3 class="d-inline-block">Catégorie:</h3> {{ $produit->categorie->nom }} </p>
+                    </div>
                     <p class="product-description">{{ $produit->description }}</p>
                     <div class="product-details">
-                        <p class="product-price">Prix: {{ $produit->prix }} €</p>
+                        <p class="product-price">Prix: {{ $produit->prix }} MAD</p>
                         <p class="product-tva">TVA: {{ $produit->tva }}%</p>
                         <p class="product-rating">Évaluation: {{ $produit->rating }}/5</p>
                     </div>
@@ -55,4 +47,4 @@
             </div>
         </div>
 </body>
-</html>
+@endsection

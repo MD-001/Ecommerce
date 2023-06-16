@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Edit categorie</title>
+        <title>@yield('title', 'Liste des produits')</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="admin/css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -44,13 +44,25 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="/produit">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
+                                Produit
+                            </a>
+                            <a class="nav-link" href="/categorie">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Categorie
+                            </a>
+                            <a class="nav-link" href="/fournisseur">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Fournisseur
+                            </a>
+                            <a class="nav-link" href="/marque">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Marque
                             </a>
                             <a class="nav-link" href="#">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Ajouter Categorie
+                                Propriete
                             </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -115,35 +127,26 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Categories</h1>
+                        <h1 class="mt-4">@yield('head-table', 'Produit')</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Liste des Categories</li>
+                            <li class="breadcrumb-item active">Liste des @yield('head-table', 'Produit')s</li>
                         </ol>
-                        <div class="row justify-content-center">
-                            <form
-                            action="{{ route('categorie.update', $categorie->id) }}"
-                            method="POST" 
-                            enctype="multipart/form-data">
-                            @csrf
-                            @method('PUT')
-                                <div class="row mb-3">
-                                    <label for="nom" class=" col-form-label">Nom :</label>
-                                    <div class="col-md-6">
-                                        <input id="nom" type="text" class="form-control" name="nom" required autocomplete="nom" value="{{ $categorie->nom }}" autofocus>
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <label for="image" class="col-form-label">Image :</label>
-                                    <div class="col-md-6">
-                                        <input id="image" type="file" accept="image/png, image/gif, image/jpeg" class="form-control" name="image" autocomplete="name" autofocus>
-                                        <img src="{{ asset($categorie->image) }}" width="100px" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <button class="btn btn-success w-25">Editer</button>
-                                </div>
-                            </form>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <ul class="d-flex justify-content-between align-items-center" style="list-style-type: none">
+                                    <li>
+                                        <i class="fas fa-table me-1"></i>produit Disponible
+                                    </li>
+                                    <li>
+                                        <a class="btn btn-success" 
+                                        href="{{ route('produit.create') }}"
+                                        >Ajouter @yield('head-table', 'Produit')</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                @yield('content')
+                            </div>
                         </div>
                     </div>
                 </main>

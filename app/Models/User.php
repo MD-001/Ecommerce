@@ -25,6 +25,7 @@ class User extends Authenticatable
         "role",
         "email",
         "username",
+        "password",
         "ville_id"
     ];
 
