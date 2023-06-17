@@ -16,7 +16,7 @@ class Produit extends Model
                     'prix',
                     "image",
                     "qte_stock",
-                    "tva",
+                    "promotion",
                     "rating",
                     'propriete_id',
                     'marque_id',

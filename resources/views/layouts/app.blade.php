@@ -19,11 +19,9 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
 	{{-- my-cart link --}}
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	
-	  
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<!-- Scripts -->
 	@vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -78,131 +76,47 @@
 					<div class="col-md-6 categories">
 						<h3>Popular Categories</h3>
 						<ul class="m-0 p-0">
-							<li>
-								<a href="#">
-									<div class="categorie-container">
-										<img class="image" src="https://picsum.photos/100/100" alt="...">
-										<div class="categorie-text">
-											<h5 class="m-0">Categorie</h5>
-											<div class="categorie-see-more">
-												<span>See more</span> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-													fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-													<path fill-rule="evenodd"
-														d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-												</svg>
+							@foreach ($categories as $key => $categorie)
+								@if ($key < 4)
+								<li>
+									<a href="#">
+										<div class="categorie-container">
+											<img class="image" src="https://picsum.photos/100/100" alt="...">
+											<div class="categorie-text">
+												<h5 class="m-0">{{ $categorie->nom }}</h5>
+												<div class="categorie-see-more">
+													<span>See more</span> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+														fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+														<path fill-rule="evenodd"
+															d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+													</svg>
+												</div>
 											</div>
 										</div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<div class="categorie-container">
-										<img class="image" src="https://picsum.photos/100/100" alt="...">
-										<div class="categorie-text">
-											<h5 class="m-0">Categorie</h5>
-											<div class="categorie-see-more">
-												<span>See more</span> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-													fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-													<path fill-rule="evenodd"
-														d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-												</svg>
-											</div>
-										</div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<div class="categorie-container">
-										<img class="image" src="https://picsum.photos/100/100" alt="...">
-										<div class="categorie-text">
-											<h5 class="m-0">Categorie</h5>
-											<div class="categorie-see-more">
-												<span>See more</span> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-													fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-													<path fill-rule="evenodd"
-														d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-												</svg>
-											</div>
-										</div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<div class="categorie-container">
-										<img class="image" src="https://picsum.photos/100/100" alt="...">
-										<div class="categorie-text">
-											<h5 class="m-0">Categorie</h5>
-											<div class="categorie-see-more">
-												<span>See more</span> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-													fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-													<path fill-rule="evenodd"
-														d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-												</svg>
-											</div>
-										</div>
-									</div>
-								</a>
-							</li>
+									</a>
+								</li>
+								@endif
+							@endforeach
 						</ul>
 					</div>
 					<div class="col-md-6 products">
 						<h3>Products of the day</h3>
 						<ul class="m-0 p-0">
+							@foreach ($produits as $produit)
 							<li>
 								<a href="#">
 									<div class="product-container">
 										<img class="image" src="https://picsum.photos/100/100" alt="...">
 										<div class="product-text">
-											<h5 class="m-0">product</h5>
+											<h5 class="m-0">{{ $produit->designation }}</h5>
 											<div class="product-price">
-												<span>Prev</span> <span>new</span>
+												<span style="text-decoration: line-through ">{{ $produit->prix }}</span> <span><strong>{{ $produit->prix - (($produit->prix*$produit->promotion)/100) }}</strong></span>
 											</div>
 										</div>
 									</div>
 								</a>
 							</li>
-							<li>
-								<a href="#">
-									<div class="product-container">
-										<img class="image" src="https://picsum.photos/100/100" alt="...">
-										<div class="product-text">
-											<h5 class="m-0">product</h5>
-											<div class="product-price">
-												<span>Prev</span> <span>new</span>
-											</div>
-										</div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<div class="product-container">
-										<img class="image" src="https://picsum.photos/100/100" alt="...">
-										<div class="product-text">
-											<h5 class="m-0">product</h5>
-											<div class="product-price">
-												<span>Prev</span> <span>new</span>
-											</div>
-										</div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<div class="product-container">
-										<img class="image" src="https://picsum.photos/100/100" alt="...">
-										<div class="product-text">
-											<h5 class="m-0">product</h5>
-											<div class="product-price">
-												<span>Prev</span> <span>new</span>
-											</div>
-										</div>
-									</div>
-								</a>
-							</li>
+							@endforeach
 						</ul>
 					</div>
 				</div>
@@ -244,7 +158,6 @@
 											<path
 												d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
 										</svg>
-									
 
 									</a>
 								</li>
@@ -252,17 +165,15 @@
 									<a class="nav-link d-flex" href="">
 										<div>
 											<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-											class="bi bi-cart3" viewBox="0 0 16 16">
-											<path
-												d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-										</svg>
+												class="bi bi-cart3" viewBox="0 0 16 16">
+												<path
+													d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+											</svg>
 										</div>
-									
-											{{-- panier --}}
-											<span class="fs-5">({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }})</span>
-											{{--  --}}
+										{{-- panier --}}
+										<span class="fs-5"> ({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }})</span>
+										{{--  --}}
 									</a>
-
 
 								</li>
 								<li class="nav-item">
@@ -284,14 +195,11 @@
 				{{-- navbar-categories --}}
 				<div class="navbar-categories">
 					<div class="row d-flex justify-content-center align-items-center">
-						<div class="col-lg-1">
-							<a href="#">All</a>
-						</div>
-						@for ($i = 0; $i < 6; $i++)
+						@foreach ($categories as $categorie)
 							<div class="col-lg-1">
-								<a href="#">Test</a>
+								<a href="#">{{ $categorie->nom }}</a>
 							</div>
-						@endfor
+						@endforeach
 						<div class="col-lg-1">
 							<a href="#">Best deals</a>
 						</div>
@@ -348,9 +256,8 @@
 		<main>
 			@yield('content')
 			@include('sweetalert::alert')
-
 			@yield('script')
-			
+
 		</main>
 
 		<footer>
@@ -474,7 +381,6 @@
 					</ul>
 				</div>
 			</div>
-
 		</footer>
 	</div>
 
@@ -482,8 +388,7 @@
 		//scroll to-top 
 		const toTop = document.querySelector(".to-top");
 		window.addEventListener("scroll", () => {
-			if (window.pageYOffset > 100 && window.pageYOffset + window.innerHeight < document.documentElement
-				.scrollHeight - 100) {
+			if (window.pageYOffset > 100 && window.pageYOffset + window.innerHeight < document.documentElement.scrollHeight - 100) {
 				toTop.classList.add("active");
 			} else {
 				toTop.classList.remove("active");
@@ -555,7 +460,7 @@
 		});
 	</script>
 
-@livewireScripts
+	@livewireScripts
 </body>
 
 </html>

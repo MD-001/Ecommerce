@@ -12,7 +12,7 @@ html {
 }
 
 body, h1, h2, h3, h4, h5, p, a, button, input, label {
-    font-family: 'Inter', sans-serif;
+    font-family: Inter, sans-serif;
 }
 
 //to up button
@@ -33,6 +33,7 @@ body, h1, h2, h3, h4, h5, p, a, button, input, label {
     opacity: 0;
     pointer-events: none;
     transition: all .3s;
+    z-index: 100;
 }
 
 .to-top.active {
@@ -266,7 +267,7 @@ body, h1, h2, h3, h4, h5, p, a, button, input, label {
 .items-overlay .categories .categorie-see-more, 
 .items-overlay .products .product-price {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     gap: 0.5rem;
 }
@@ -660,6 +661,20 @@ body, h1, h2, h3, h4, h5, p, a, button, input, label {
 .filter-container select {
     padding: 0.5rem 1.5rem 0.5rem 0.25rem;
     border-radius: 5px;
+}
+
+//directory links
+.directory-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.directory-links a:nth-child(1) {
+    display: flex;
+    align-items: start;
+    justify-content: flex-start;
+    gap: 0.25rem;
 }
 
 //filter overlay

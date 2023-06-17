@@ -1,12 +1,16 @@
 <?php
 
 use App\Models\Produit;
+use App\Models\Categorie;
+use App\Views\Composers\MultiComposer;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProductCotroller;
 use App\Http\Controllers\ProduitController;
-use App\Http\Controllers\ClientController;
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\Guest\GuestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,12 +27,6 @@ use App\Http\Controllers\CartController;
 Auth::routes();
 Auth::routes(['verify' => true]);
 
-Route::get('/', function () {
-    // return view('layouts.app');
-    $produits = Produit::all();
-    return view('homepage.index', ['produits'=>$produits]);
-});
-
 Route::get('/shop/index', function () {
     return view('shop-pages.index');
 });
@@ -41,12 +39,22 @@ Route::get('/shop/product', function () {
     return view('shop-item.index');
 });
 
+Route::get('/layout', [GuestController::class, 'layout'])->name('guest.layout');
+
+View::composer(['*'], function ($view) {
+    $categories = Categorie::select('nom','image')->get();
+    $produits = Produit::where('promotion', '>=', 15)->select('designation', 'prix', 'promotion')->limit(4)->get();
+    $view->with('categories', $categories)->with('produits', $produits);
+});
+
 Route::group([
     'middleware' => 'guest', 
-    'prefix' => 'visiteur', 
-    'as' => '.guests'
+    'prefix' => 'home', 
+    'as' => '.home'
     ], function () {
-        Route::get("/home", []);
+        Route::get('/', [GuestController::class, 'home'])->name('guest.home');
+        Route::get('/login', function () { return view('auth.login'); });
+        Route::get('/register', function () { return view('auth.register'); });
     
     Route::group([
         'middleware' => 'auth', 
@@ -84,13 +92,7 @@ Route::get('/dashboard', function () {
     return view('admin.index');
 });
 
-Route::get('/login', function () {
-    return view('auth.login');
-});
 
-Route::get('/register', function () {
-    return view('auth.register');
-});
 
 // Route::get('/add-product', function () {
 //     return view('admin.categorie');

@@ -1,24 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Guest;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Categorie;
 use App\Models\Produit;
+use Illuminate\Http\Request;
 
-class ProductCotroller extends Controller
+class GuestController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function layout()
     {
-      
-        $allProducts = Produit::all();
-        //   dd($allProducts);
-        return view('homepage.index', ['allProducts'=>$allProducts]);
-
+        return view('layouts.app', compact('categories', 'produits'));
     }
 
     /**
@@ -26,9 +24,19 @@ class ProductCotroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function home()
     {
-        //
+        $produitsElectroniques = Produit::join('categories', 'produits.categorie_id', '=', 'categories.id')
+                            ->select('id','prix','designation','description','promotion')
+                            ->where('categories.nom','Électronique')
+                            ->limit(10)
+                            ->get();
+        $produitsChaussures = Produit::join('categories', 'produits.categorie_id', '=', 'categories.id')
+                            ->select('id','prix','designation','description','promotion')
+                            ->where('categories.nom','Chaussures')
+                            ->limit(10)
+                            ->get();
+        return view('guest.home', compact('produitsElectroniques', 'produitsChaussures'));
     }
 
     /**

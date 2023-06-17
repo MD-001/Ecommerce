@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['categories' => $categories])
 
 <title>Shop Homepage</title>
     @section('content')
@@ -66,16 +66,23 @@
 
 			{{-- sliders --}}
 			<section class="container mb-4 slider-container">
-				<x-product-slider />
+				<x-slider.slider-header />
+					<div class="slider">
+						@foreach ($produitsElectroniques as $produit)
+						<x-slider.slider-main :produit="$produit" />	
+						@endforeach
+					</div>
 			</section>
 
 			<section class="container mb-4 slider-container">
-				<x-product-slider />
+				<x-slider.slider-header />
+					<div class="slider">
+						@foreach ($produitsChaussures as $produit)
+						<x-slider.slider-main :produit="$produit" />	
+						@endforeach
+					</div>
 			</section>
-
-			<section class="container mb-4 slider-container">
-				<x-product-slider />
-			</section>
+			
 
         @endsection
 @section('script')
