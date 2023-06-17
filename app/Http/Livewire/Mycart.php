@@ -6,24 +6,55 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
-use App\Models\ServiceLivraison;
+use App\Models\ModeLivraison;
 
 
 class Mycart extends Component
 {
     use WithPagination;
+
     public $num =1;
     public $cart;
-    protected $listeners = ['increment' => 'incrementQty', 'decrement' => 'decrementQty' , 'close' => 'closeProduit'];
+    public $selectedShippingOption;
+    public $shippingPrice;
+
+   
+    public $productsPrice;
+
+    public $totalPrice;
+    public $nbrProduit;
+
+    protected $listeners = ['increment' => 'incrementQty', 'decrement' => 'decrementQty' , 'close' => 'closeProduit', 'shipping' => 'shipping'];
+
+// 
 
 
+// protected $listeners = ['shipping'];
+
+
+
+// 
     public function mount($cart)
     {
+
         $this->cart = $cart;
+        $this->productsPrice = Cart::total(2, '.', '');
+         $this->nbrProduit =Cart::content()->count();
+         $this->shippingPrice=empty(session('prixLivraison')) ? "35.00" : session('prixLivraison');
+
+        // dd( floatval($this->productsPrice) + floatval($this->shippingPrice));
+          // update totale
+          if (Cart::count()==0) {
+            $this->totalPrice = 0;
+        }else {
+            $this->totalPrice = floatval($this->productsPrice) + floatval($this->shippingPrice);
+        }
+       
+
     }
     public function render()
     {
-        $ServiceLivraison = ServiceLivraison::all();
+        $ServiceLivraison = ModeLivraison::all();
         // dd($this->cart);
         return view('livewire.mycart', ['ServiceLivraison'=>$ServiceLivraison]);
     }
@@ -45,6 +76,13 @@ class Mycart extends Component
         }
  
         Cart::update($rowId,  $qty); // Will update the quantity
+             // update totale
+             if (Cart::count()==0) {
+                $this->totalPrice = 0;
+            }else {
+                $this->productsPrice = Cart::total(2, '.', '');
+                $this->totalPrice = floatval($this->productsPrice) + floatval($this->shippingPrice);
+            }
     }
     public function decrementQty($id, $qty)
     {
@@ -67,6 +105,13 @@ class Mycart extends Component
         }
  
         Cart::update($rowId,  $qty); // Will update the quantity
+           // update totale
+           if (Cart::count()==0) {
+            $this->totalPrice = 0;
+        }else {
+            $this->productsPrice = Cart::total(2, '.', '');
+            $this->totalPrice = floatval($this->productsPrice) + floatval($this->shippingPrice);
+        }
     }
 
     public function closeProduit($id)
@@ -80,7 +125,38 @@ class Mycart extends Component
         }
         // dd($rowId);
         Cart::remove($rowId);
+        $this->nbrProduit =Cart::content()->count();
+        // update panier
+        $this->emit('updateCart');
+            // update totale
+    if (Cart::count()==0) {
+        $this->totalPrice = 0;
+    }else {
+        $this->productsPrice = Cart::total(2, '.', '');
+        $this->totalPrice = floatval($this->productsPrice) + floatval($this->shippingPrice);
+        
     }
+ 
+    }
+
+    public function shipping($id)
+{
+    $prixLivraison = ModeLivraison::where('id',$id)->first();
+    
+
+    // Utilisez la valeur sélectionnée ici
+    $this->shippingPrice = $prixLivraison->prix;
+    session(['prixLivraison' =>$this->shippingPrice]);
+
+    // dd($prixLivraison->prix);
+           // update totale
+           if (Cart::count()==0) {
+            $this->totalPrice = 0;
+        }else {
+            $this->productsPrice = Cart::total(2, '.', '');
+            $this->totalPrice = floatval($this->productsPrice) + floatval($this->shippingPrice);
+        }
+}
 
     public function add()
     {

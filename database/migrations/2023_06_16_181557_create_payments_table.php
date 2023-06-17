@@ -13,11 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('factures', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->decimal("total",8,2);
-            $table->dateTime("date");
-            $table->foreignId('commande_ref')->constrained('commandes','ref')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('cardholder_name');
+            $table->string('card_number');
+            $table->string('MM-Date');
+            $table->string('YYYY-Date');
+            $table->string('cvc');
+            $table->timestamps();
+            
         });
     }
 
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('factures');
+        Schema::dropIfExists('payments');
     }
 };

@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	  
 	
 	  
 
@@ -249,7 +250,7 @@
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link d-flex" href="">
+									<a class="nav-link d-flex" href="{{ route('client-my-cart') }}">
 										<div>
 											<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
 											class="bi bi-cart3" viewBox="0 0 16 16">
@@ -259,7 +260,9 @@
 										</div>
 									
 											{{-- panier --}}
-											<span class="fs-5">({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }})</span>
+											{{-- <span class="fs-5" >({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }})</span> --}}
+											@livewire('number-achat')
+											
 											{{--  --}}
 									</a>
 
@@ -555,7 +558,10 @@
 		});
 	</script>
 
+
+
 @livewireScripts
+
 </body>
 
 </html>

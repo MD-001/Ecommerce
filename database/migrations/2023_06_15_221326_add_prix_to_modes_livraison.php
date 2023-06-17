@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('factures', function (Blueprint $table) {
-            $table->id();
-            $table->decimal("total",8,2);
-            $table->dateTime("date");
-            $table->foreignId('commande_ref')->constrained('commandes','ref')->onUpdate('cascade')->onDelete('cascade');
+        Schema::table('modes_livraison', function (Blueprint $table) {
+            //
+            $table->decimal('prix', 8, 2);
+
         });
     }
 
@@ -28,6 +27,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('factures');
+        Schema::table('modes_livraison', function (Blueprint $table) {
+            //
+            $table->dropColumn('prix');
+        });
     }
 };

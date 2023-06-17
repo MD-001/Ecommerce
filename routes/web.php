@@ -35,7 +35,7 @@ Route::get('/shop/index', function () {
 
 Route::get('/shop/ajouter', function () {
     return view('shop-pages.productsByCategorie');
-});
+})->name('shop-add');
 
 Route::get('/shop/product', function () {
     return view('shop-item.index');
@@ -69,6 +69,8 @@ Route::group([
 
 Route::resource('/product', ProductCotroller::class)->middleware('guest');
 Route::get('/client-my-cart', [ClientController::class, 'showMyCart'])->name('client-my-cart');
+Route::get('/client-checkout', [ClientController::class, 'Checkout'])->name('client.Checkout');
+Route::post('/client-confirme-checkout', [ClientController::class, 'ConfirmeCheckout'])->name('client.ConfirmeCheckout');
 Route::resource('/client', ClientController::class);
 Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
 
