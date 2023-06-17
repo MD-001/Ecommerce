@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categorie;
 use App\Http\Controllers\Controller;
+use App\Models\Produit;
 use Illuminate\Http\Request;
 
 class CategorieController extends Controller
@@ -22,24 +23,6 @@ class CategorieController extends Controller
 
     public function store(Request $request)
 {
-    // $request->validate([
-    //     'nom' => 'required',
-    //     'image' => 'required|image',
-    // ]);
-
-    // $categorie = new Categorie();
-    // $categorie->nom = $request->nom;
-
-    // if ($request->hasFile('image')) {
-    //     $image = $request->file('image');
-    //     $imageName = time() . '.' . $image->getClientOriginalExtension();
-    //     $image->move(public_path('admin/assets/img'), $imageName);
-    //     $categorie->image = $imageName;
-    // }
-
-    // $categorie->save();
-
-    // return redirect()->route('categorie.index');
     $requestData = $request->all();
     if ($request->hasFile('image')) {
         $fileName = time() . $request->file('image')->getClientOriginalName();
@@ -52,11 +35,11 @@ class CategorieController extends Controller
     return redirect()->route('categorie.index');
 }
 
-
-
-    public function show(Categorie $categorie)
+    public function show($id)
     {
-        //
+        $produits = Produit::where('categorie_id', $id)->get();
+        // dd($produits);
+        return view('admin.show-categorie', ['produits'=>$produits]);
     }
 
     public function edit(Categorie $categorie)
@@ -68,7 +51,6 @@ class CategorieController extends Controller
     public function update(Request $request, Categorie $categorie)
     {
         $requestData = $request->all();
-        
         if ($request->hasFile('image')) {
             $fileName = time() . $request->file('image')->getClientOriginalName();
             $path = $request->file('image')->storeAs('images', $fileName, 'public');

@@ -5,9 +5,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductCotroller;
 use App\Http\Controllers\ProduitController;
+use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\FournisseurController;
+use App\Http\Controllers\MarqueController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CartController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -107,7 +109,8 @@ Route::get('/add-categorie', function () {
 });
 Route::Resource('/categorie', CategorieController::class);
 Route::Resource('/produit', ProduitController::class);
-
+Route::Resource('/fournisseur', FournisseurController::class);
+Route::Resource('/marque', MarqueController::class);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');Auth::routes();
 
 Auth::routes();

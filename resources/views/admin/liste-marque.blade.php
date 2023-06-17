@@ -1,41 +1,35 @@
 @extends('layouts.admin')
 @section('content')
-@section('head-table', 'Produit')
-@section('title', 'Liste des produits')
+@section('head-table', 'Marque')
+@section('title', 'Liste des marques')
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
                                             <th>image</th>
-                                            <th>designation</th>
-                                            <th>prix</th>
-                                            <th>qantité de stock</th>
-                                            <th>TVA</th>
-                                            <th>rating</th>
+                                            <th>nom</th>
+                                            <th>libelle</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($produits as $produit)
+                                        @foreach ($marques as $marque)
                                             <tr>
                                                 <td>
                                                     <div class="justify-content-center d-flex">
-                                                        <img src="{{ asset($produit->image) }}" width="120px" height="100px" alt="image" />
+                                                        <img src="{{ asset($marque->image) }}" width="120px" height="100px" alt="image" />
                                                     </div>
                                                 </td>
-                                                <td>{{ $produit->designation }}</td>
-                                                <td>{{ $produit->prix }}</td>
-                                                <td>{{ $produit->qte_stock }}</td>
-                                                <td>{{ $produit->tva }}</td>
-                                                <td>{{ $produit->rating }}</td>
+                                                <td>{{ $marque->nom }}</td>
+                                                <td>{{ $marque->libelle }}</td>
                                                 <td>
                                                     <a
-                                                    href="{{ route('produit.show', $produit) }}" 
+                                                    href="{{ route('marque.show', $marque) }}" 
                                                      class="btn btn-info">show</a>
                                                     <a 
-                                                    href="{{ route('produit.edit', $produit) }}" 
+                                                    href="{{ route('marque.edit', $marque) }}" 
                                                      class="btn btn-warning">edit</a>
                                                     <div class="d-inline-block">
-                                                    <form method="POST" action="{{ route('produit.destroy', $produit) }}">
+                                                    <form method="POST" action="{{ route('marque.destroy', $marque) }}">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger">Supprimer</button>
@@ -45,4 +39,4 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-@endsection                   
+@endsection
