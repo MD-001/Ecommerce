@@ -32,11 +32,15 @@ Route::get('/shop/index', function () {
 });
 
 Route::get('/shop/ajouter', function () {
-    return view('shop-pages.productsByCategorie');
+    return view('guest.produitsParCategorie');
 });
 
 Route::get('/shop/product', function () {
-    return view('shop-item.index');
+    return view('shop-item.index',);
+});
+
+Route::get('/shop/cart', function () {
+    return view('shop-item.my-cart');
 });
 
 Route::get('/layout', [GuestController::class, 'layout'])->name('guest.layout');

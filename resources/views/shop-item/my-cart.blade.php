@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 
@@ -18,10 +17,5 @@
     
         {{-- test livelire --}}
         @livewire('mycart', ['cart' => $cart])
- 
-       
-    
-
-
 
 @endsection

@@ -82,8 +82,18 @@
 						@endforeach
 					</div>
 			</section>
-			
 
+			<section class="container mb-4 slider-container">
+				<x-slider.slider-header />
+					<div class="offre-container">
+						<img src="" alt="">
+						<div class="offre-text">
+							<div class="offre-counter">
+
+							</div>
+						</div>
+					</div>
+			</section>
         @endsection
 @section('script')
 
