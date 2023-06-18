@@ -44,12 +44,11 @@
 				</div>
 				<form method="POST" action="{{ route('register') }}">
 					@csrf
-					
 					{{-- nom et prenom --}}
 					<div class="nom-prenom-container">
 						<div class="nom-container">
 							<label for="nom">Nom</label>
-							<input class="form-control" value=" {{ old('nom') }} " type="text" name="nom" id="nom"
+							<input class="form-control" value="{{ old('nom') }}" type="text" name="nom" id="nom"
 								autocomplete="nom" autofocus required />
 							@error('nom')
 								<span class="invalid-feedback" role="alert">
@@ -59,7 +58,7 @@
 						</div>
 						<div class="prenom-container">
 							<label for="prenom">Prénom</label>
-							<input class="form-control" value=" {{ old('prenom') }} " type="text" name="prenom" id="prenom"
+							<input class="form-control" value="{{ old('prenom') }}" type="text" name="prenom" id="prenom"
 								autocomplete="prenom" autofocus required>
 							@error('prenom')
 								<span class="invalid-feedback" role="alert">
@@ -72,7 +71,7 @@
 					{{-- adresse --}}
 					<div class="adresse-container">
 						<label for="adresse">Adresse</label>
-						<input class="form-control" value=" {{ old('adresse') }} " type="text" name="adresse" id="adresse"
+						<input class="form-control" value="{{ old('adresse') }}" type="text" name="adresse" id="adresse"
 							autocomplete="adresse" autofocus required>
 						@error('adresse')
 							<span class="invalid-feedback" role="alert">
@@ -84,7 +83,7 @@
 					{{-- ville --}}
 					<div class="ville-container">
 						<label for="ville">Ville</label>
-						<select class="form-select" aria-label="Default select example" value=" {{ old('ville') }} " name="ville"
+						<select class="form-select" aria-label="Default select example" value="{{ old('ville') }}" name="ville"
 							id="ville" autocomplete="ville" autofocus required>
 							<option selected>Choisissez une ville</option>
 							@foreach ($villes as $ville)
@@ -101,7 +100,7 @@
 					{{-- email --}}
 					<div class="email-container">
 						<label for="email">Email</label>
-						<input class="form-control" value=" {{ old('email') }} " type="text" name="email" id="email"
+						<input class="form-control" value="{{ old('email') }}" type="text" name="email" id="email"
 							autocomplete="email" autofocus required>
 						@error('email')
 							<span class="invalid-feedback" role="alert">
@@ -113,7 +112,7 @@
 					{{-- password --}}
 					<div class="password-container">
 						<label for="password">Mot de passe</label>
-						<input class="form-control" value=" {{ old('password') }} " type="text" name="password" id="password"
+						<input class="form-control" value="{{ old('password') }}" type="password" name="password" id="password"
 							autocomplete="password" autofocus required>
 						@error('password')
 							<span class="invalid-feedback" role="alert">
@@ -125,7 +124,7 @@
 					{{-- confirm password --}}
 					<div class="password-confirmer-container">
 						<label for="password-confirmer">Confirmer Mot de passe</label>
-						<input class="form-control" value=" {{ old('password-confirmer') }} " type="text"
+						<input class="form-control" value="{{ old('password-confirmer') }}" type="password"
 							name="password-confirmer" id="password-confirmer" autocomplete="password-confirmer"
 							autofocus required>
 						@error('password-confirmer')
