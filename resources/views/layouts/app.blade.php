@@ -165,7 +165,7 @@
 
 								{{-- panier --}}
 								<li class="nav-item">
-									<a class="nav-link d-flex" href="">
+									<a class="nav-link d-flex" href="{{ route('client-my-cart') }}">
 										<div>
 											<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
 												class="bi bi-cart3" viewBox="0 0 16 16">
@@ -556,7 +556,14 @@
 		});
 	</script>
 
+<<<<<<< HEAD
 	@livewireScripts
+=======
+
+
+@livewireScripts
+
+>>>>>>> e88f0d7f3b6a5e00669a7b57352c3ddcae8f216c
 </body>
 
 </html>

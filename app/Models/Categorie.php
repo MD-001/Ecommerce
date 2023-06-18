@@ -15,5 +15,8 @@ class Categorie extends Model
                     ];
     protected $primaryKey = 'id';
     public $timestamps = false;
+    public function Produits(){
+        $this->hasMany(Produit::class);
+    }
 }
 

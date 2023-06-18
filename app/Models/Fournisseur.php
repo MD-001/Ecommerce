@@ -17,4 +17,7 @@ class Fournisseur extends Model
                     ];
     protected $primaryKey = "id";
     public $timestamps = false;
+    public function produits(){
+        $this->hasMany(Produit::class);
+    }
 }

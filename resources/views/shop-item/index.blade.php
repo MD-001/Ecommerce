@@ -1,5 +1,4 @@
 @extends('layouts.app')
-<title>Products / Categorie Name</title>
 
 @section('content')
 	<section class="item-details section">
@@ -298,6 +297,13 @@
     </div>
     <!-- End Review Modal -->
 
+        if (selectedQuantity < minQuantity) {
+            inputQuantity.value = minQuantity;
+        }
+    }
+</script>
+
+ 
 
 
 

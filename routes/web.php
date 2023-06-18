@@ -81,6 +81,8 @@ Route::group([
 
 Route::resource('/product', ProductCotroller::class)->middleware('guest');
 Route::get('/client-my-cart', [ClientController::class, 'showMyCart'])->name('client-my-cart');
+Route::get('/client-checkout', [ClientController::class, 'Checkout'])->name('client.Checkout');
+Route::post('/client-confirme-checkout', [ClientController::class, 'ConfirmeCheckout'])->name('client.ConfirmeCheckout');
 Route::resource('/client', ClientController::class);
 Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
 
@@ -111,7 +113,8 @@ Route::get('/add-categorie', function () {
 });
 Route::Resource('/categorie', CategorieController::class);
 Route::Resource('/produit', ProduitController::class);
-
+Route::Resource('/fournisseur', FournisseurController::class);
+Route::Resource('/marque', MarqueController::class);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');Auth::routes();
 
 Auth::routes();
