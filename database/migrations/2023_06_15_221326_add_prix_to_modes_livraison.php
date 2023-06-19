@@ -14,9 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('modes_livraison', function (Blueprint $table) {
-            //
             $table->decimal('prix', 8, 2);
-
         });
     }
 
@@ -28,7 +26,6 @@ return new class extends Migration
     public function down()
     {
         Schema::table('modes_livraison', function (Blueprint $table) {
-            //
             $table->dropColumn('prix');
         });
     }

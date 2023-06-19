@@ -93,16 +93,10 @@ class DatabaseSeeder extends Seeder
         Marque::factory(50)->create();
         
         Categorie::insert([
-            ["nom" => "Vêtements et accessoires"], 
-            ["nom" => "Chaussures"], 
-            ["nom" => "Sacs et bagages"], 
-            ["nom" => "Bijoux et montres"], 
-            ["nom" => "Beauté et bien-être"], 
-            ["nom" => "Maison et jardin"], 
-            ["nom" => "Électronique"], 
-            ["nom" => "Livres et médias"], 
-            ["nom" => "Sports et loisirs"], 
-            ["nom" => "Jouets et jeux"]
+            ["nom" => "Téléphone"], 
+            ["nom" => "Tablette"], 
+            ["nom" => "Laptop"], 
+            ["nom" => "Télévision"], 
         ]);
 
         Produit::factory(50)->create();
@@ -124,19 +118,24 @@ class DatabaseSeeder extends Seeder
 
         ModeLivraison::insert([
             ["libelle" => "Standard",
-            "description" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, aut."
+            "description" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, aut.",
+            "prix" => 1000.00
             ], 
             ["libelle" => "Un-jour",
-            "description" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, aut."
+            "description" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, aut.",
+            "prix" => 2000.00
             ], 
             ["libelle" => "Même-jour",
-            "description" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, aut."
+            "description" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, aut.",
+            "prix" => 3000.00
             ], 
             ["libelle" => "Planifiée",
-            "description" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, aut."
+            "description" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, aut.",
+            "prix" => 4000.00
             ], 
             ["libelle" => "Point de récupéreration",
-            "description" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, aut."
+            "description" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, aut.",
+            "prix" => 5000.00
             ], 
         ]);
 

@@ -42,6 +42,7 @@
 					<h1>Créer votre compte</h1>
 					<p>pour continuer sur Myriad Shop</p>
 				</div>
+				
 				<form method="POST" action="{{ route('register') }}">
 					@csrf
 					{{-- nom et prenom --}}
@@ -140,7 +141,7 @@
 						<div class="input-group">
 							<span class="input-group-text" id="basic-addon1">+212</span>
 							<input type="number" class="form-control" name="tel" id="tel"
-								aria-label="Username" aria-describedby="basic-addon1" value=" {{ old('tel') }} "
+								aria-label="Username" aria-describedby="basic-addon1" value="{{ old('tel') }}"
 								autocomplete="tel" autofocus required>
 							@error('tel')
 								<span class="invalid-feedback" role="alert">

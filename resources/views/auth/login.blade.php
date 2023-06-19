@@ -44,11 +44,10 @@
 						</div>
 						<form method="POST" action="{{ route('login') }}">
 							@csrf
-							
 							{{-- email --}}
 							<div class="email-container">
 								<label for="email">Email</label>
-								<input class="form-control" value=" {{ old('email') }} " type="text" name="email" id="email"
+								<input class="form-control" value="{{ old('email') }}" type="text" name="email" id="email"
 									autocomplete="email" autofocus required>
 								@error('email')
 									<span class="invalid-feedback" role="alert">
@@ -60,7 +59,7 @@
 							{{-- password --}}
 							<div class="password-container">
 								<label for="password">Mot de passe</label>
-								<input class="form-control" value=" {{ old('password') }} " type="text" name="password" id="password"
+								<input class="form-control" value="{{ old('password') }}" type="password" name="password" id="password"
 									autocomplete="password" autofocus required>
 								@error('password')
 									<span class="invalid-feedback" role="alert">

@@ -144,56 +144,68 @@
 
 						{{-- Middle-side of the navbar --}}
 						<div class="col-md-4 d-flex justify-content-center">
-							<a class="text-center" href="#">
+							<a class="text-center" href="{{ url('/home') }}">
 								<img width="200px" src="{{ asset('storage/Logo/' . 'logo.png') }}" alt="Logo">
 							</a>
 						</div>
 
 						{{-- Right-side of the navbar --}}
-						<div class="col-md-4 d-flex justify-content-md-end">
-							<ul id="nav-icons" class="navbar-nav d-flex justify-content-center align-items-center mb-lg-0 gap-2">
-								<li class="nav-item">
-									<a class="nav-link" href="">
-										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-											class="bi bi-heart" viewBox="0 0 16 16">
-											<path
-												d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-										</svg>
-
-									</a>
-								</li>
-
+						<div class="col-md-4 d-flex justify-content-md-end pe-3">
+							<ul id="nav-icons" class="navbar-nav d-flex justify-content-center align-items-center mb-lg-0 gap-3">
 								{{-- panier --}}
 								<li class="nav-item">
-									<a class="nav-link d-flex" href="{{ route('client-my-cart') }}">
-										<div>
+									<a class="nav-link" href="{{ route('client-my-cart') }}">
+										<div class="panier-svg">
 											<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
 												class="bi bi-cart3" viewBox="0 0 16 16">
 												<path
 													d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
 											</svg>
+											<div class="panier-number">
+												<span> {{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }}</span>
+											</div>
 										</div>
-										<div class="panier-number">
-											<span> {{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }}</span>
+										<div class="panier-text">
+											<span>Panier</span>
 										</div>
 									</a>
 									{{-- panier number --}}
-
 								</li>
+								@guest
+									@if (Route::has('login'))
+										<li class="nav-item se-connecter">
+											<a class="nav-link" href="{{ route('login') }}">
+												<button class="btn">
+													<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+														class="bi bi-person" viewBox="0 0 16 16">
+														<path
+															d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+													</svg>
+													<span> Se connecter </span>
+												</button>
+											</a>
+										</li>
+									@endif
+								@else
+									<li class="nav-item dropdown">
+										<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+											data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+											{{ Auth::user()->nom }}
+										</a>
 
-								<li class="nav-item se-connecter">
-									<a class="nav-link" href="{{ route('register') }}">
-										<button class="btn">
-											<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-												class="bi bi-person" viewBox="0 0 16 16">
-												<path
-													d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
-											</svg>
-											<span> Se connecter </span>
-										</button>
-									</a>
-								</li>
+										<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+											<a class="dropdown-item" href="{{ route('logout') }}"
+												onclick="event.preventDefault();
+														document.getElementById('logout-form').submit();">
+												{{ __('Logout') }}
+											</a>
 
+											<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+												@csrf
+											</form>
+										</div>
+									</li>
+								@endguest
 							</ul>
 						</div>
 					</div>
@@ -203,12 +215,9 @@
 					<div class="row d-flex justify-content-center align-items-center">
 						@foreach ($categories as $categorie)
 							<div class="col-lg-1">
-								<a href="#">{{ $categorie->nom }}</a>
+								<a href="{{ route('guest.toCategorie', $categorie->nom) }}">{{ $categorie->nom }}</a>
 							</div>
 						@endforeach
-						<div class="col-lg-1">
-							<a href="#">Best deals</a>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -263,65 +272,9 @@
 			@include('sweetalert::alert')
 			@yield('script')
 
-			<section class="shipping-info">
-				<div class="container">
-					<ul>
-						<!-- Free Shipping -->
-						<li>
-							<div class="media-icon">
-								<i class="bi bi-truck"></i>
-							</div>
-							<div class="media-body">
-								<h5>Free Shipping</h5>
-								<span>On order over $99</span>
-							</div>
-						</li>
-						<!-- Money Return -->
-						<li>
-							<div class="media-icon">
-								<i class="bi bi-chat-left-text"></i>
-							</div>
-							<div class="media-body">
-								<h5>24/7 Support.</h5>
-								<span>Live Chat Or Call.</span>
-							</div>
-						</li>
-						<!-- Support 24/7 -->
-						<li>
-							<div class="media-icon">
-								<i class="bi bi-credit-card-2-back"></i>
-							</div>
-							<div class="media-body">
-								<h5>Online Payment.</h5>
-								<span>Secure Payment Services.</span>
-							</div>
-						</li>
-						<!-- Safe Payment -->
-						<li>
-							<div class="media-icon">
-								<i class="bi bi-arrow-repeat"></i>
-							</div>
-							<div class="media-body">
-								<h5>Easy Return.</h5>
-								<span>Hassle Free Shopping.</span>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</section>
-
 		</main>
 		<footer>
-			{{-- footer-subscribe --}}
-			<div class="footer-subscribe row m-0 px-5">
-				<h5>Oui ! Je souhaite recevoir des offres exclusives, des notifications sur les derniers produits et des astuces
-					personnalisées.</h5>
-				<form class="form-subscribe row">
-					<input class="form-control" placeholder="Indiquer votre adresse email">
-					<button type="submit" class="btn">S'abonner</button>
-				</form>
-			</div>
-
+			@yield('footer-subscribe')
 			{{-- footer-main --}}
 			<div class="footer-main px-5">
 				<div class="row d-flex justify-content-center">
@@ -395,7 +348,7 @@
 					<div class="row links-social">
 						<div class="col-md-5 credit-cards">
 							<span class="m-0">ON ACCEPTE</span>
-							<img src="{{ asset('storage/credit-cards.png')}}" alt="">
+							<img src="{{ asset('storage/credit-cards.png') }}" alt="">
 						</div>
 						<div class="col-md-5 social-media">
 							<span class="m-0">RETROUVEZ-NOUS SUR</span>
@@ -555,14 +508,8 @@
 		});
 	</script>
 
-<<<<<<< HEAD
 	@livewireScripts
-=======
 
-
-@livewireScripts
-
->>>>>>> e88f0d7f3b6a5e00669a7b57352c3ddcae8f216c
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 // Fonts
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Lato&display=swap');
 
 // Variables
 @import "variables";
@@ -24,7 +24,7 @@ input,
 label, 
 span, 
 li {
-    font-family: Inter, sans-serif;
+    font-family: 'Lato', sans-serif;
 }
 
 body {
@@ -169,33 +169,30 @@ body {
     transition: transform 0.2s linear;
 }
 
-.navbar-categories .row > div a:hover:before {
-    transform: scalex(1);
-}
-
-#nav-icons li:nth-child(-n + 2) a {
+#nav-icons li:nth-child(1) a {
     border-radius: 50%;
     width: 45px;
     height: 45px;
     display: flex;
     justify-content: center;
+    gap: 0.5rem;
+    width: 6rem;
     align-items: center;
     background-color: transparent;
     transition: background-color 0.15s ease-in-out;
 }
 
-#nav-icons li:nth-child(-n + 2) a:hover {
+#nav-icons li:nth-child(1) a:hover {
     color: #3a8891;
-    background-color: #d9d9d9;
     transition: 0.2s ease-in;
 }
 
 //panier
-#nav-icons li:nth-child(2) {
+#nav-icons li:nth-child(1) .panier-svg {
     position: relative;
 }
 
-#nav-icons li:nth-child(2) .panier-number {
+#nav-icons li:nth-child(1) .panier-number {
     width: 20px;
     height: 20px;
     margin: 0 !important;
@@ -207,11 +204,11 @@ body {
     align-items: center;
     position: absolute;
     border-radius: 400%;
-    top: 4px;
-    right: 4px;
+    top: -3px;
+    left: 10px;
 }
 
-#nav-icons li:nth-child(2) .panier-number span {
+#nav-icons li:nth-child(1) .panier-number span {
     font-size: 0.85px;
     padding-top: 1px;
 }
@@ -431,6 +428,12 @@ body {
     background-color: transparent;
 }
 
+.section-slider-buttons button:focus,
+.section-slider-buttons button:active {
+    box-shadow: none !important;
+    border: none !important;
+}
+
 .section-slider-buttons button svg {
     transform: scale(1);
     transition: transform 200ms ease-in-out;
@@ -474,7 +477,7 @@ body {
 .slider-item-image img {
     width: inherit;
     max-width: inherit;
-    border-radius: 2.5%;
+    border-radius: 2%;
     cursor: pointer;
     transform: scale(1);
     transition: transform 200ms ease-in-out;
@@ -537,6 +540,10 @@ body {
 }
 
 //footer subscribe
+.prepended-background-shape span svg {
+    fill: #a1cdd2;
+}
+
 .footer-subscribe {
     display: flex;
     flex-direction: column;
@@ -544,13 +551,12 @@ body {
     align-items: center;
     gap: 0.75rem;
     padding: 3rem 0rem 3rem 0rem;
-    background-image: url("/public/storage/pattern.jpg");
-    background-repeat: no-repeat;
+    background-color: #a1cdd2;
 }
 
 .footer-subscribe h5 {
     font-family: Inter, sans-serif;
-    color: white;
+    color: black;
     font-weight: 700;
     text-align: center;
     margin: 0;
@@ -590,7 +596,7 @@ body {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     border-left: none;
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 .form-subscribe .btn:hover {

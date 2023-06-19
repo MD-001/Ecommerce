@@ -57,32 +57,25 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-     
-        //
         $produit = Produit::findOrFail($id);
-       
-        $relatedProduct = Produit::where('categorie_id',$produit->categorie_id)->inRandomOrder()->take(4)->get();
-
-
-        return view('shop-item.index', ['produit' => $produit , 'relatedProduct'=>$relatedProduct]);
-
+        $relatedProduct = Produit::where('categorie_id', $produit->categorie_id)->inRandomOrder()->take(4)->get();
+        return view('shop-item.index', ['produit' => $produit, 'relatedProduct' => $relatedProduct]);
     }
+
     public function showMyCart()
     {
-        $cart =Cart::content();
+        $cart = Cart::content();
         // dd($cart);
-     
-        return view('shop-item.my-cart' ,['cart'=>$cart]);
 
+        return view('shop-item.my-cart', ['cart' => $cart]);
     }
 
     public function Checkout()
     {
-        $cart =Cart::content();
+        $cart = Cart::content();
         // dd($cart);
-     
-        return view('shop-item.checkout');
 
+        return view('shop-item.checkout');
     }
 
     public function ConfirmeCheckout(Request $request)
@@ -90,7 +83,6 @@ class ClientController extends Controller
         // dd($request);
         // $user = User::where('id', Auth::id())->first();
         // dd($user->prenom);
-        
 
         $rules = [
             'Cardholder' => 'required',
@@ -118,30 +110,30 @@ class ClientController extends Controller
         $user = User::where('id', Auth::id())->first();
 
         $checkPayment = Payment::where('cardholder_name', $request->Cardholder)
-        ->where('card_number', $request->CardNumber)
-        ->where('MM-Date', $request->input('MM-Date'))
-        ->where('YYYY-Date', $request->input('YYYY-Date'))
-        ->where('cvc', $request->input('CVC-CVV'))
-        ->exists();
+            ->where('card_number', $request->CardNumber)
+            ->where('MM-Date', $request->input('MM-Date'))
+            ->where('YYYY-Date', $request->input('YYYY-Date'))
+            ->where('cvc', $request->input('CVC-CVV'))
+            ->exists();
 
         if ($checkPayment) {
             // Toutes les données de paiement existent dans la table "payments"
             // Effectuez les actions nécessaires ici
             // dd('exist payment');
-            $newCommade =new Commande();
-            $newCommade->date=Carbon::now();
-            $newCommade->description='test decription';
-            $newCommade->etat_commande_id ='1';
-            $newCommade->total=floatval(Cart::total(2, '.', '')) + floatval(session('prixLivraison'));
-            $newCommade->client_id=$user->id;
+            $newCommade = new Commande();
+            $newCommade->date = Carbon::now();
+            $newCommade->description = 'test decription';
+            $newCommade->etat_commande_id = '1';
+            $newCommade->total = floatval(Cart::total(2, '.', '')) + floatval(session('prixLivraison'));
+            $newCommade->client_id = $user->id;
             $newCommade->save();
             // send email
 
-            
+
             $data = [
                 'name' => $user->nom,
                 'prenom' => $user->prenom,
-                'email_client' => $user->email ,
+                'email_client' => $user->email,
                 'Adresse' => $user->adresse,
                 'phone_number' => $user->tel,
                 'numCommande' => $newCommade->ref,
@@ -149,9 +141,9 @@ class ClientController extends Controller
                 'total' => $newCommade->total,
 
             ];
-            
+
             Mail::to("amine1nhili@gmail.com")
-            ->send(new SendEmail($data));
+                ->send(new SendEmail($data));
 
 
             // vider le panier et supprime la session livraison
@@ -169,12 +161,12 @@ class ClientController extends Controller
         }
 
         // dd($request);
-}
-// public function PasserCommande()
-// {
-//     //
+    }
+    // public function PasserCommande()
+    // {
+    //     //
 
-// }
+    // }
 
     /**
      * Show the form for editing the specified resource.

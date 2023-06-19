@@ -26,28 +26,30 @@ class GuestController extends Controller
      */
     public function home()
     {
-        $produitsElectroniques = Produit::join('categories', 'produits.categorie_id', '=', 'categories.id')
+        $telephones = Produit::join('categories', 'produits.categorie_id', '=', 'categories.id')
                             ->select('id','prix','designation','description','promotion')
-                            ->where('categories.nom','Électronique')
+                            ->where('categories.nom', 'Téléphone')
+                            ->where('produits.promotion','>', 0)
                             ->limit(10)
                             ->get();
-        $produitsChaussures = Produit::join('categories', 'produits.categorie_id', '=', 'categories.id')
+        $laptops = Produit::join('categories', 'produits.categorie_id', '=', 'categories.id')
                             ->select('id','prix','designation','description','promotion')
-                            ->where('categories.nom','Chaussures')
+                            ->where('categories.nom', 'Laptop')
+                            ->where('produits.promotion','>', 0)
                             ->limit(10)
                             ->get();
-        return view('guest.home', compact('produitsElectroniques', 'produitsChaussures'));
+        return view('guest.home', compact('telephones', 'laptops'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function toCategorie($categorie)
     {
-        //
+        // dd($categorie);
+        $produitsDeCategorie = Produit::join('categories', 'produits.categorie_id', '=', 'categories.id')
+                                    ->select('id', 'prix', 'designation', 'description', 'promotion')
+                                    ->where('categories.nom', $categorie)
+                                    ->get();
+        return view('guest.produitsParCategorie', compact('produitsDeCategorie'));
     }
 
     /**

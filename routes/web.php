@@ -23,6 +23,18 @@ use App\Http\Controllers\Guest\GuestController;
 |
 */
 
+View::composer(['*'], function ($view) {
+    $categories = Categorie::select('nom','image')->get();
+    $produits = Produit::where('promotion', '>=', 15)->select('designation', 'prix', 'promotion')->limit(4)->get();
+    $view->with('categories', $categories)->with('produits', $produits);
+});
+
+Route::get('/login', function () {
+    return view('auth.login');
+});
+Route::get('/register', function () {
+    return view('auth.register');
+});
 
 Auth::routes();
 Auth::routes(['verify' => true]);
@@ -31,9 +43,7 @@ Route::get('/shop/index', function () {
     return view('shop-pages.index');
 });
 
-Route::get('/shop/ajouter', function () {
-    return view('guest.produitsParCategorie');
-});
+
 
 Route::get('/shop/product', function () {
     return view('shop-item.index',);
@@ -45,41 +55,33 @@ Route::get('/shop/cart', function () {
 
 Route::get('/layout', [GuestController::class, 'layout'])->name('guest.layout');
 
-View::composer(['*'], function ($view) {
-    $categories = Categorie::select('nom','image')->get();
-    $produits = Produit::where('promotion', '>=', 15)->select('designation', 'prix', 'promotion')->limit(4)->get();
-    $view->with('categories', $categories)->with('produits', $produits);
-});
 
 Route::group([
-    'middleware' => 'guest', 
     'prefix' => 'home', 
-    'as' => '.home'
     ], function () {
-        Route::get('/', [GuestController::class, 'home'])->name('guest.home');
-        Route::get('/login', function () { return view('auth.login'); });
-        Route::get('/register', function () { return view('auth.register'); });
-    
+    Route::get('/', [GuestController::class, 'home'])->name('guest.home');
+    Route::get('{categorie}', [GuestController::class, 'toCategorie'])->name('guest.toCategorie');
+
     Route::group([
-        'middleware' => 'auth', 
-        'prefix' => 'client', 
-        'as' => '.client'
-        ], function () {
+        'middleware' => 'auth',
+        'prefix' => 'client',
+    ], function () {
         // routes des clients
-        
-        
-        Route::group([
-            'middleware' => 'admin', 
-            'prefix' => 'admin', 
-            'as' => '.admin'
-            ], function () {
-            // routes de l'admin
-        });
     });
 });
 
 
-Route::resource('/product', ProductCotroller::class)->middleware('guest');
+
+    Route::group([
+        'middleware' => 'admin',
+        'prefix' => 'admin',
+    ], function () {
+        // routes de l'admin
+    });
+
+
+
+// Route::resource('/product', ProductCotroller::class)->middleware('guest');
 Route::get('/client-my-cart', [ClientController::class, 'showMyCart'])->name('client-my-cart');
 Route::get('/client-checkout', [ClientController::class, 'Checkout'])->name('client.Checkout');
 Route::post('/client-confirme-checkout', [ClientController::class, 'ConfirmeCheckout'])->name('client.ConfirmeCheckout');
@@ -111,10 +113,10 @@ Route::get('/categories', function () {
 Route::get('/add-categorie', function () {
     return view('admin.ajouter-categorie');
 });
-Route::Resource('/categorie', CategorieController::class);
-Route::Resource('/produit', ProduitController::class);
-Route::Resource('/fournisseur', FournisseurController::class);
-Route::Resource('/marque', MarqueController::class);
+// Route::Resource('/categorie', CategorieController::class);
+// Route::Resource('/produit', ProduitController::class);
+// Route::Resource('/fournisseur', FournisseurController::class);
+// Route::Resource('/marque', MarqueController::class);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');Auth::routes();
 
 Auth::routes();
