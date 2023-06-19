@@ -1,19 +1,21 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\slider;
 
+use App\Models\Produit;
 use Illuminate\View\Component;
 
-class ProductSlider extends Component
+class SliderMain extends Component
 {
+    public $produit;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Produit $produit)
     {
-        //
+        $this->produit = $produit;
     }
 
     /**
@@ -23,6 +25,6 @@ class ProductSlider extends Component
      */
     public function render()
     {
-        return view('components.product-slider');
+        return view('components.slider.slider-main');
     }
 }

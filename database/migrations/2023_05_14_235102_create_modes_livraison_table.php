@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string("libelle");
             $table->string("description");
+            $table->decimal('prix', 8, 2);
         });
     }
 

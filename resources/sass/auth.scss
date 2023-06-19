@@ -1,0 +1,336 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "bootstrap/scss/bootstrap";
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a,
+button,
+input,
+label {
+    font-family: Inter, sans-serif;
+}
+
+.page-container {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: scroll;
+    align-items: flex-start;
+    padding-top: clamp(2rem, 10vw, 5rem);
+    background-color: #ffffff;
+}
+
+.register-container, .login-container {
+    box-sizing: border-box;
+    width: fit-content;
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    margin-bottom: 5rem;
+}
+
+//register
+.register-header {
+    background-color: white;
+    box-sizing: inherit;
+    display: flex;
+    flex-flow: column nowrap;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    gap: 2rem;
+    will-change: transform, opacity, height;
+    border-radius: 1.35em;
+    transition-property: background-color, border-color, color, fill, stroke,
+        opacity, box-shadow, transform;
+    transition-duration: 200ms;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 24px 48px;
+    border: 1px solid transparent;
+    width: 25rem;
+    max-width: calc(100vw - 5rem);
+    padding: 2.375rem 2rem 3rem;
+}
+
+.logo-container {
+    box-sizing: inherit;
+    display: flex;
+    flex-flow: row nowrap;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    height: 48px;
+    object-fit: cover;
+}
+
+.logo-container a {
+    box-sizing: border-box;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 0px;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 0.8125rem;
+    line-height: 1.25;
+    -webkit-font-smoothing: auto !important;
+}
+
+.logo-container img {
+    height: 48px;
+}
+
+.text-container {
+    box-sizing: inherit;
+    display: flex;
+    flex-flow: column nowrap;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    gap: 0.25rem;
+}
+
+.text-container h1 {
+    box-sizing: border-box;
+    color: rgb(26, 26, 26);
+    margin: 0px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    -webkit-font-smoothing: auto !important;
+}
+
+.text-container p {
+    box-sizing: border-box;
+    color: rgba(26, 26, 26, 0.65);
+    margin: 0px;
+    font-size: 1rem;
+    font-family: inherit;
+    font-weight: 400;
+    line-height: 1.25;
+    -webkit-font-smoothing: auto !important;
+}
+
+form {
+    box-sizing: inherit;
+    display: flex;
+    flex-flow: column nowrap;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+form .btn {
+    background-color: #3a8891;
+    color: white;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 600;
+}
+
+form .btn:hover {
+    background-color: #3a8891;
+    color: white;
+}
+
+form .btn:active,
+.btn:focus {
+    background-color: #0e5e6f !important;
+    color: white !important;
+    box-shadow: 0 0 0 0.2rem rgb(58, 136, 145, 0.25) !important;
+}
+
+form .nom-prenom-container {
+    box-sizing: inherit;
+    display: flex;
+    flex-flow: row nowrap;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+form .adresse-container,
+.ville-container,
+.email-container,
+.password-container .password-confirmer-container,
+.phone-container {
+    box-sizing: inherit;
+    display: flex;
+    flex-flow: column nowrap;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    position: relative;
+    flex: 1 1 auto;
+}
+
+form label {
+    color: rgb(26, 26, 26);
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    line-height: 1.375;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-font-smoothing: auto !important;
+}
+
+form input {
+    background-color: white;
+}
+
+form .form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgb(58, 136, 145, 0.35);
+    border-color: #0e5e6f;
+}
+
+form .form-select:focus {
+    box-shadow: 0 0 0 0.2rem rgb(58, 136, 145, 0.35);
+    border-color: #0e5e6f;
+}
+
+.register-footer {
+    box-sizing: inherit;
+    display: flex;
+    flex-flow: row nowrap;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    gap: 0.25rem;
+}
+
+.register-footer span {
+    box-sizing: border-box;
+    color: rgba(26, 26, 26, 0.65);
+    margin: 0px;
+    font-size: 0.8125rem;
+    font-family: inherit;
+    font-weight: 400;
+    line-height: 1.25;
+    -webkit-font-smoothing: auto !important;
+}
+
+.register-footer a {
+    box-sizing: border-box;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 0px;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 0.8125rem;
+    line-height: 1.25;
+    color: rgb(26, 26, 26);
+    -webkit-font-smoothing: auto !important;
+}
+
+//login
+.page-container {
+    width: calc(100% + var(--sidebarWidth));
+}
+
+.login-container {
+    width: 50rem;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    border-radius: 1.35em;
+    transition-property: background-color, border-color, color, fill, stroke,
+        opacity, box-shadow, transform;
+    transition-duration: 200ms;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 24px 48px;
+    width: 100%;
+}
+
+.login-header {
+    background-color: white;
+    box-sizing: inherit;
+    display: flex;
+    flex-flow: column nowrap;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    -webkit-box-pack: start;
+    justify-content: start;
+    gap: 2rem;
+    will-change: transform, opacity, height;
+    border-top-right-radius: 1.35em;
+    border-bottom-right-radius: 1.35em;
+    transition-property: background-color, border-color, color, fill, stroke,
+        opacity, box-shadow, transform;
+    transition-duration: 200ms;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 24px 48px;
+    border: 1px solid transparent;
+    width: 25rem;
+    max-width: calc(100vw - 5rem);
+    padding: 2.375rem 2rem 3rem;
+    height: 100%;
+}
+
+.login-container form label {
+    margin-bottom: 8px;
+}
+
+.terms {
+    box-sizing: border-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    justify-content: start;
+    margin-top: 3.5rem;
+    gap: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 0.8125rem;
+    line-height: 1.25;
+    color: rgba(26, 26, 26, 0.65);
+    -webkit-font-smoothing: auto !important;
+}
+
+.terms a {
+    box-sizing: border-box;
+    display: flex;
+    -webkit-box-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 0.8125rem;
+    line-height: 1.25;
+    color: rgba(26, 26, 26, 0.65);
+    -webkit-font-smoothing: auto !important;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+}

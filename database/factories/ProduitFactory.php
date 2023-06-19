@@ -21,12 +21,12 @@ class ProduitFactory extends Factory
     public function definition()
     {
         return [
-            'designation' => fake()->sentence(2),
+            'designation' => fake()->words(3, true),
             'description' => fake()->text(),
             'prix' => fake()->randomFloat(2,200, 10000),
             'image' => fake()->imageUrl(),
             'qte_stock' => fake()->numberBetween(50,300),
-            'tva' => fake()->numberBetween(5,20),
+            'promotion' => fake()->numberBetween(0,20),
             'rating' => fake()->numberBetween(1,5),
             'propriete_id' => fake()->randomElement(Propriete::pluck('id')),
             'marque_id' => fake()->randomElement(Marque::pluck('id')),
