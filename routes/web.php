@@ -24,9 +24,9 @@ use App\Http\Controllers\Guest\GuestController;
 */
 
 View::composer(['*'], function ($view) {
-    $categories = Categorie::select('nom','image')->get();
-    $produits = Produit::where('promotion', '>=', 15)->select('designation', 'prix', 'promotion')->limit(4)->get();
-    $view->with('categories', $categories)->with('produits', $produits);
+    $categoriesSearchOverlay = Categorie::select('nom','image')->get();
+    $produitsSearchOverlay = Produit::where('promotion', '>=', 15)->select('designation', 'prix', 'promotion')->limit(4)->get();
+    $view->with('categoriesSearchOverlay', $categoriesSearchOverlay)->with('produitsSearchOverlay', $produitsSearchOverlay);
 });
 
 Route::get('/login', function () {
@@ -60,13 +60,18 @@ Route::group([
     'prefix' => 'home', 
     ], function () {
     Route::get('/', [GuestController::class, 'home'])->name('guest.home');
-    Route::get('{categorie}', [GuestController::class, 'toCategorie'])->name('guest.toCategorie');
+    Route::get('/{categorie}', [GuestController::class, 'toCategorie'])->name('guest.toCategorie');
+    Route::post('/chercher', [GuestController::class, 'chercherProduit'])->name('guest.chercherProduit');
 
     Route::group([
         'middleware' => 'auth',
         'prefix' => 'client',
     ], function () {
-        // routes des clients
+        Route::get('/cart', [ClientController::class, 'showMyCart'])->name('client-my-cart');
+        Route::get('/checkout', [ClientController::class, 'Checkout'])->name('client.Checkout');
+        Route::post('/confirme-checkout', [ClientController::class, 'ConfirmeCheckout'])->name('client.ConfirmeCheckout');
+        Route::resource('/', ClientController::class);
+        Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
     });
 });
 
@@ -82,11 +87,7 @@ Route::group([
 
 
 // Route::resource('/product', ProductCotroller::class)->middleware('guest');
-Route::get('/client-my-cart', [ClientController::class, 'showMyCart'])->name('client-my-cart');
-Route::get('/client-checkout', [ClientController::class, 'Checkout'])->name('client.Checkout');
-Route::post('/client-confirme-checkout', [ClientController::class, 'ConfirmeCheckout'])->name('client.ConfirmeCheckout');
-Route::resource('/client', ClientController::class);
-Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
+
 
 Route::get('/home-page', function () {
     return view('homepage.index');

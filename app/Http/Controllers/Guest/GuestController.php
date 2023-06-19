@@ -44,12 +44,12 @@ class GuestController extends Controller
 
     public function toCategorie($categorie)
     {
-        // dd($categorie);
-        $produitsDeCategorie = Produit::join('categories', 'produits.categorie_id', '=', 'categories.id')
+        $produits = Produit::join('categories', 'produits.categorie_id', '=', 'categories.id')
                                     ->select('id', 'prix', 'designation', 'description', 'promotion')
                                     ->where('categories.nom', $categorie)
                                     ->get();
-        return view('guest.produitsParCategorie', compact('produitsDeCategorie'));
+
+        return view('guest.liste-produits', compact('produits'));
     }
 
     /**
@@ -58,9 +58,13 @@ class GuestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function chercherProduit(Request $request)
     {
-        //
+        $nomProduit = $request->nomProduit;
+        $produits = Produit::where('designation','LIKE', '%'.$nomProduit.'%')
+                                ->orWhere('description', 'LIKE', '%'.$nomProduit.'%')
+                                ->get();
+        return view('guest.liste-produits', compact('produits'));
     }
 
     /**

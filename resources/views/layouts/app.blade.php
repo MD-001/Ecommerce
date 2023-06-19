@@ -48,18 +48,22 @@
 
 				{{-- search overlay --}}
 				<div class="search-container">
-					<form class="col-md-10 offset-1 m-0" action="">
+					
+					<form method="POST" class="col-md-10 offset-1 m-0" action=" {{ route('guest.chercherProduit') }} ">
+						@method('POST')
+						@csrf
 						<div class="search-bar">
-							<button>
+							<button type="submit">
 								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
 									class="bi bi-search search-icon" viewBox="0 0 16 16">
 									<path
 										d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
 								</svg>
 							</button>
-							<input type="text" class="form-control" placeholder="Search for anything">
+							<input type="text" name="nomProduit" class="form-control" placeholder="Search for anything">
 						</div>
 					</form>
+
 					<div class="col-md-1 close-overlay">
 						<button>
 							<svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-x"
@@ -76,14 +80,14 @@
 					<div class="col-md-6 categories">
 						<h3>Popular Categories</h3>
 						<ul class="m-0 p-0">
-							@foreach ($categories as $key => $categorie)
+							@foreach ($categoriesSearchOverlay as $key => $categorieSearchOverlay)
 								@if ($key < 4)
 									<li>
-										<a href="#">
+										<a href=" {{ route('guest.toCategorie', $categorieSearchOverlay->nom) }} ">
 											<div class="categorie-container">
 												<img class="image" src="https://picsum.photos/100/100" alt="...">
 												<div class="categorie-text">
-													<h5 class="m-0">{{ $categorie->nom }}</h5>
+													<h5 class="m-0">{{ $categorieSearchOverlay->nom }}</h5>
 													<div class="categorie-see-more">
 														<span>See more</span> <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
 															fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
@@ -102,16 +106,16 @@
 					<div class="col-md-6 products">
 						<h3>Products of the day</h3>
 						<ul class="m-0 p-0">
-							@foreach ($produits as $produit)
+							@foreach ($produitsSearchOverlay as $produitSearchOverlay)
 								<li>
 									<a href="#">
 										<div class="product-container">
 											<img class="image" src="https://picsum.photos/100/100" alt="...">
 											<div class="product-text">
-												<h5 class="m-0">{{ $produit->designation }}</h5>
+												<h5 class="m-0">{{ $produitSearchOverlay->designation }}</h5>
 												<div class="product-price">
-													<span style="text-decoration: line-through ">{{ $produit->prix }}</span>
-													<span><strong>{{ $produit->prix - ($produit->prix * $produit->promotion) / 100 }}</strong></span>
+													<span style="text-decoration: line-through ">{{ $produitSearchOverlay->prix }}</span>
+													<span><strong>{{ $produitSearchOverlay->prix - ($produitSearchOverlay->prix * $produitSearchOverlay->promotion) / 100 }}</strong></span>
 												</div>
 											</div>
 										</div>
@@ -210,12 +214,13 @@
 						</div>
 					</div>
 				</nav>
+
 				{{-- navbar-categories --}}
 				<div class="navbar-categories">
 					<div class="row d-flex justify-content-center align-items-center">
-						@foreach ($categories as $categorie)
+						@foreach ($categoriesSearchOverlay as $categorieSearchOverlay)
 							<div class="col-lg-1">
-								<a href="{{ route('guest.toCategorie', $categorie->nom) }}">{{ $categorie->nom }}</a>
+								<a href="{{ route('guest.toCategorie', $categorieSearchOverlay->nom) }}">{{ $categorieSearchOverlay->nom }}</a>
 							</div>
 						@endforeach
 					</div>
@@ -223,56 +228,16 @@
 			</div>
 		@endif
 
-		{{-- <!-- Right Side Of Navbar -->
-					<ul class="navbar-nav ms-auto">
-						<form class="d-flex">
-							<button class="btn btn-outline-dark" type="submit">
-								<i class="bi-cart-fill me-1"></i>
-								Panier
-								<span class="badge bg-dark ms-1 rounded-pill text-white">0</span>
-							</button>
-						</form>
-						<!-- Authentication Links -->
-						@guest
-							@if (Route::has('login'))
-								<li class="nav-item">
-									<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-								</li>
-							@endif
 
-							@if (Route::has('register'))
-								<li class="nav-item">
-									<a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-								</li>
-							@endif
-						@else
-							<li class="nav-item dropdown">
-								<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-									aria-haspopup="true" aria-expanded="false" v-pre>
-									{{ Auth::user()->name }}
-								</a>
-
-								<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-									<a class="dropdown-item" href="{{ route('logout') }}"
-										onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-										{{ __('Logout') }}
-									</a>
-
-									<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-										@csrf
-									</form>
-								</div>
-							</li>
-						@endguest
-					</ul> --}}
 
 		<main>
 			@yield('content')
 			@include('sweetalert::alert')
 			@yield('script')
-
 		</main>
+
+
+
 		<footer>
 			@yield('footer-subscribe')
 			{{-- footer-main --}}

@@ -65,8 +65,6 @@ class ClientController extends Controller
     public function showMyCart()
     {
         $cart = Cart::content();
-        // dd($cart);
-
         return view('shop-item.my-cart', ['cart' => $cart]);
     }
 
@@ -74,7 +72,6 @@ class ClientController extends Controller
     {
         $cart = Cart::content();
         // dd($cart);
-
         return view('shop-item.checkout');
     }
 
@@ -103,8 +100,6 @@ class ClientController extends Controller
             'CVC-CVV.required' => 'Code requis.',
             'CVC-CVV.digits_between' => 'Code invalide.',
         ];
-
-
 
         $request->validate($rules, $messages);
         $user = User::where('id', Auth::id())->first();
@@ -139,12 +134,10 @@ class ClientController extends Controller
                 'numCommande' => $newCommade->ref,
                 'date_commande' =>  $newCommade->created_at,
                 'total' => $newCommade->total,
-
             ];
 
             Mail::to("amine1nhili@gmail.com")
                 ->send(new SendEmail($data));
-
 
             // vider le panier et supprime la session livraison
             Cart::destroy();

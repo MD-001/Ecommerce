@@ -1,4 +1,4 @@
-@extends('layouts.app', ['categories' => $categories])
+@extends('layouts.app')
 
 <title>Shop Homepage</title>
     @section('content')
@@ -30,39 +30,6 @@
 					</div>
 				</div>
 			</section>
-
-			{{-- <section>
-				<div class="quality-section row">
-					<div class="col-md-4">
-						<img src="" alt="">
-						<div class="quality-text">
-							<h5></h5>
-							<p></p>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<img src="" alt="">
-						<div class="quality-text">
-							<h5></h5>
-							<p></p>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<img src="" alt="">
-						<div class="quality-text">
-							<h5></h5>
-							<p></p>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<img src="" alt="">
-						<div class="quality-text">
-							<h5></h5>
-							<p></p>
-						</div>
-					</div>
-				</div>
-			</section> --}}
 
 			{{-- sliders --}}
 			<section class="container mb-4 slider-container">
