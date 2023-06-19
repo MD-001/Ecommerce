@@ -8,23 +8,24 @@
 	<link rel="stylesheet" href="{{ asset('css/main.css') }}" type="text/css">
 
 	<form action="{{ route('client.ConfirmeCheckout') }}" method="POST">
-        @method('POST')
+		@method('POST')
 		@csrf
 		<section class="checkout-wrapper section">
 			<div class="container">
 				<div class="row justify-content-center">
-					
-                    <div class="col-lg-8">
+
+					<div class="col-lg-8">
 						<div class="checkout-steps-form-style-1">
 							<ul id="accordionExample">
 								<li>
 									<section class="checkout-steps-form-content" id="" aria-labelledby="headingFive"
 										data-bs-parent="#accordionExample">
+										<h5 class="title">Payment</h5>
+
 										<div class="row">
 											<div class="col-12">
-													<h5 class="title">Payment</h5>
-                                                <div class="checkout-payment-form">
-                                                    <div class="single-form form-default">
+												<div class="checkout-payment-form">
+													<div class="single-form form-default">
 														<label>Cardholder Name</label>
 														<div class="form-input form">
 															<input type="text" class="form-control @error('Cardholder') is-invalid @enderror"
@@ -40,8 +41,8 @@
 
 														</div>
 													</div>
-													
-                                                    <div class="single-form form-default">
+
+													<div class="single-form form-default">
 														<label>Card Number</label>
 														<div class="form-input form">
 															<input id="credit-input" type="text" name="CardNumber"
@@ -58,8 +59,8 @@
 																&nbsp;&nbsp;{{ $message }}</span>
 														@enderror
 													</div>
-													
-                                                    <div class="payment-card-info">
+
+													<div class="payment-card-info">
 														<div class="single-form form-default mm-yy">
 															<label>Expiration</label>
 															<div class="expiration d-flex">
@@ -80,11 +81,11 @@
 															</div>
 														</div>
 													</div>
-													
-                                                    
-                                                    <div class="single-form form-default button">
+
+													<div class="single-form form-default button">
 														<button class="btn">pay now</button>
 													</div>
+
 												</div>
 											</div>
 										</div>
@@ -100,28 +101,26 @@
 								<h5 class="title">Tableau des Tarifs</h5>
 								<div class="sub-total-price">
 									<div class="total-price">
-										<p class="value">Sous TOTAL:</p>
-										<p class="price"> {{ Cart::total() }} MAD</p>
+										<p class="value m-0">Sous TOTAL:</p>
+										<p class="price m-0"> {{ Cart::total() }} MAD</p>
 									</div>
 									<div class="total-price shipping">
-										<p class="value">Prix de Livraison:</p>
-
-										<p class="price">{{ session('prixLivraison') }} MAD</p>
+										<p class="value m-0">Prix de Livraison:</p>
+										<p class="price m-0">{{ session('prixLivraison') }} MAD</p>
 									</div>
 								</div>
 								<div class="total-payable">
 									<div class="payable-price">
-										<p class="value">Prix TOTAL:</p>
-										<p class="price">{{ floatval(Cart::total(2, '.', '')) + floatval(session('prixLivraison')) }} MAD</p>
+										<p class="value m-0">Prix TOTAL:</p>
+										<p class="price m-0">{{ floatval(Cart::total(2, '.', '')) + floatval(session('prixLivraison')) }} MAD</p>
 									</div>
 								</div>
 								<div class="price-table-btn button">
-									<a href="javascript:void(0)" class="btn btn-alt">Continue shopping</a>
+									<a href="javascript:void(0)" class="btn">Continue shopping</a>
 								</div>
 							</div>
 						</div>
 					</div>
-
 
 				</div>
 			</div>
