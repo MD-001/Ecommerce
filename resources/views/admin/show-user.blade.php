@@ -13,18 +13,18 @@
 </head>
 <body>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Produits</h1>
+            <h1 class="mt-4">users</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Liste des produits</li>
+                <li class="breadcrumb-item active">Liste des users</li>
             </ol>
             <div class="card mb-4">
                 <div class="card-header">
                     <ul class="d-flex justify-content-between align-items-center" style="list-style-type: none">
                         <li>
-                            <i class="fas fa-table me-1"></i>Produits Disponible
+                            <i class="fas fa-table me-1"></i>users Disponible
                         </li>
                         <li>
-                            <a class="btn btn-success" href="{{ route('fournisseur.create') }}">Ajouter fournisseur</a>
+                            <a class="btn btn-success" href="{{ route('categorie.create') }}">Ajouter Categorie</a>
                         </li>
                     </ul>
                 </div>
@@ -32,37 +32,33 @@
                     <table class="w-100" id="datatablesSimple">
                         <thead>
                             <tr>
-                                <th class="text-center">image</th>
-                                <th class="text-center">designation</th>
-                                <th class="text-center">prix</th>
-                                <th class="text-center">qantité de stock</th>
-                                <th class="text-center">TVA</th>
-                                <th class="text-center">rating</th>
+                                <th class="text-center">Date commande</th>
+                                <th class="text-center">description</th>
+                                <th class="text-center">total</th>
+                                <th class="text-center">Etat du commande</th>
                                 <th class="text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($produits as $produit)
+                            @foreach ($user->commandes as $user)
                                 <tr>
-                                    <td>
-                                        <div class="justify-content-center d-flex">
-                                            <img src="{{ asset($produit->image) }}" width="120px" height="100px" alt="image" />
-                                        </div>
-                                    </td>
-                                    <td>{{ $produit->designation }}</td>
-                                    <td>{{ $produit->prix }}</td>
-                                    <td>{{ $produit->qte_stock }}</td>
-                                    <td>{{ $produit->tva }}</td>
-                                    <td>{{ $produit->rating }}</td>
+                                    <td>{{ $user->date }}</td>
+                                    <td>{{ $user->description }}</td>
+                                    <td>{{ $user->total }}</td>
+                                    <td>{{ $user->etat_commande->libelle }}</td>
+                                    {{-- <td>{{ $user->prix }}</td>
+                                    <td>{{ $user->qte_stock }}</td>
+                                    <td>{{ $user->tva }}</td>
+                                    <td>{{ $user->rating }}</td> --}}
                                     <td>
                                         <a
-                                        href="{{ route('produit.show', $produit) }}" 
+                                        href="{{ route('user.show', $user) }}" 
                                          class="btn btn-info">show</a>
                                         <a 
-                                        href="{{ route('produit.edit', $produit) }}" 
+                                        href="{{ route('user.edit', $user) }}" 
                                          class="btn btn-warning">edit</a>
                                         <div class="d-inline-block">
-                                        <form method="POST" action="{{ route('produit.destroy', $produit) }}">
+                                        <form method="POST" action="{{ route('user.destroy', $user) }}">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Supprimer</button>

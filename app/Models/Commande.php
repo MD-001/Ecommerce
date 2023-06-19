@@ -17,4 +17,10 @@ class Commande extends Model
                     "client_id"
                 ];
     protected $primaryKey = "ref";
+    public function user(){
+        return $this->belongsTo(User::class, 'client_id');
+    }
+    public function etat_commande(){
+        return $this->belongsTo(EtatCommande::class, 'etat_commande_id');
+    }
 }

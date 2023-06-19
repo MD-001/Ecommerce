@@ -10,6 +10,8 @@ use App\Http\Controllers\FournisseurController;
 use App\Http\Controllers\MarqueController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -110,6 +112,6 @@ Route::Resource('/produit', ProduitController::class);
 Route::Resource('/fournisseur', FournisseurController::class);
 Route::Resource('/marque', MarqueController::class);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');Auth::routes();
-
+Route::Resource('/user', UserController::class);
 Auth::routes();
 Auth::routes(['verify'=>true]);

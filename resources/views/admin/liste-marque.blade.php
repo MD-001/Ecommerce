@@ -22,9 +22,6 @@
                                                 <td>{{ $marque->nom }}</td>
                                                 <td>{{ $marque->libelle }}</td>
                                                 <td>
-                                                    <a
-                                                    href="{{ route('marque.show', $marque) }}" 
-                                                     class="btn btn-info">show</a>
                                                     <a 
                                                     href="{{ route('marque.edit', $marque) }}" 
                                                      class="btn btn-warning">edit</a>

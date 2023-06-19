@@ -15,4 +15,7 @@ class EtatCommande extends Model
                     ];
     protected $primaryKey = "id";
     public $timestamps = false;
+    public function Commandes(){
+        return $this->hasMany(Commande::class, 'etat_commande_id');
+    }
 }
